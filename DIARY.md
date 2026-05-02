@@ -20,24 +20,26 @@ I decided to document my learnings in Applied AI and create a centralised place 
 
 I went with GitHub over Notion because it's easier to distribute. People can follow the repo and get notified when things change. It also feels more techie and I like it here more than Notion.
 
-My first documented learning is a blog post from **PostHog** on how to make Claude Code actually useful. I use PostHog a lot, basically daily, so when they wrote about their own experience adopting it I paid attention. Up until now I had been playing more with OpenClaw, but Claude Code seems to be a superior solution in terms of stability, UX and security.
+My first documented learning is a blog post from **PostHog** on how to make Claude Code actually useful. I use PostHog a lot, basically daily, so when they wrote about their own experience adopting it I paid attention. Up until now I had been playing more with OpenClaw and its extensive possibilities, but Claude Code seems to be a superior solution in terms of stability, UX and security.
 
-Here is what I took from it.
+The article is written from a team context (the author is a manager at PostHog), but the setup is practical for anyone using Claude Code seriously. Here is what I took from it.
 
-**Start by asking the agent what to use it for.** Ask Claude to come up with use cases for your specific job, not some generic listicle. What do you do, what does your team do, what do you care about. That question alone surfaces things you would never think to ask for yourself.
+**Start by asking the agent what to use it for.** The single most useful thing the author did was ask Claude to come up with use cases for his specific job. Not "top AI use cases for managers" from some listicle, but literally: here is what I do, here is what my team does, here is what I care about, now tell me where you would actually help. That question alone surfaces things you would never think to ask for yourself. Generic advice is written for someone whose job is not your job, so it rarely lands right.
 
-**Build context files before you do anything else.** The author keeps a CLAUDE.md as a personal index: who he is, his team's GitHub handles and Slack IDs, current focus areas, preferences. And a glossary.md for company-specific terms. Without these, every conversation starts from zero.
+**Build context files before you do anything else.** Claude Code does not know anything about you by default. The author solves this with a set of markdown files the agent reads before every task. The main one is CLAUDE.md, which works like a personal index: who you are, your direct reports with their GitHub handles and Slack IDs, what you are currently focused on, and your preferences. Alongside that there is a glossary.md with company-specific acronyms and the Slack channels that matter. Without this layer, every conversation starts from zero. With it, the agent already knows your world before you type a single word.
 
-**Scheduled tasks beat on-demand chat.** He uses Claude Code less as a chatbot and more as a background worker. Example: on the 8th of every month a task reads a GitHub issue of his current priorities and refreshes CLAUDE.md automatically. No manual upkeep.
+**Scheduled tasks are more valuable than chat.** This one surprised me. The author uses Claude Code less as a chatbot and more as a background worker that runs tasks on a schedule. One example he shares: on the 8th of every month, a task reads a GitHub issue called "Things Charles cares about", a list he keeps updated with his current priorities, and uses it to refresh CLAUDE.md automatically. The context never goes stale and he never has to do it manually. The idea is that the agent is not just answering questions, it is doing work while you are doing other things.
 
-**MCPs connect the agent to your actual stack.** MCP (Model Context Protocol) is the layer that plugs Claude into your tools: PostHog, Slack, GitHub, whatever you use. PostHog even ships their own official MCP. Use cases the author actually runs:
+**MCPs connect the agent to your actual stack.** MCP stands for Model Context Protocol and it is the layer that plugs Claude Code into the rest of your tools, PostHog, Slack, GitHub, whatever you use day to day. PostHog even ships their own official MCP so the agent can pull analytics data directly without you copying and pasting anything. Think of it as the difference between an assistant who only knows what you tell them in the moment, and one who can actually look things up in the systems you already use.
 
-- **Slack: morning digest.** Surfaces threads where he was tagged but never replied.
-- **GitHub: objectives coherence check.** Every Monday, pulls quarterly objectives from ~50 teams and flags contradictions or conflicting language.
-- **GitHub: 1:1 prep.** Searches each direct report's RFC and PR activity for the week and writes talking points directly into the task manager.
-- **PostHog MCP: customer lookups.** "Who is the TAM for this customer?" runs a SQL query against the data warehouse and returns the answer instantly.
-- **Linear / Notion: task writing.** Writes the 1:1 prep output directly into subtasks of a recurring task.
-- **Calendar: scheduling.** Can read your calendar for scheduling-related tasks, though less central than the others.
+The article lists several concrete MCP use cases the author actually runs:
+
+- **Slack: morning digest.** Every morning the agent surfaces Slack threads where the author was tagged but never replied, so nothing falls through the cracks without having to scroll back through the whole day.
+- **GitHub: objectives coherence check.** Every Monday it pulls the quarterly objectives from around 50 teams out of the GitHub repo, reads them all in one pass, and flags contradictions or teams using the same word to mean different things. That would take hours to do manually.
+- **GitHub: 1:1 prep.** Before each weekly 1:1, it searches every direct report's RFC and pull request activity for the week and writes the talking points directly into a subtask in the task manager, one per person.
+- **PostHog MCP: customer lookups.** Any question like "who is the TAM for this customer?" goes through the PostHog MCP, which runs a SQL query against their data warehouse and returns the answer. No more digging through spreadsheets or pinging someone on Slack.
+- **Linear / Notion: task writing.** The 1:1 prep output gets written straight into subtasks inside a recurring task in Linear or Notion, so the prep and the meeting notes live in the same place.
+- **Calendar: scheduling tasks.** The agent can read your calendar and factor it into scheduling-related tasks, though the author mentions this one is less central to their setup than the others.
 
 ### People
 
