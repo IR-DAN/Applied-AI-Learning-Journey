@@ -9,6 +9,7 @@
 ## Table of Contents
 
 - [May 2, 2026 - Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful](#may-2-2026--why-github-over-notion-and-posthogs-guide-to-making-claude-code-actually-useful)
+- [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
 
 ---
 
@@ -51,3 +52,34 @@ The article lists several concrete MCP use cases the author actually runs:
 ### Resources
 
 - [Making Claude Code Actually Useful](https://posthog.com/blog/making-claude-cowork-actually-useful) - PostHog's practical guide to context files, scheduled background tasks and MCPs
+
+---
+
+## May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It
+
+I came across a guide on Every called "A Guide to Agent-native Product Management" by Marcus Moretti, who runs Spiral, Every's AI writing product, largely as a solo operator. The premise hit close to home: a lot of what product managers do every day is routine, screen-based work that LLMs can now do just as well or better. The question is what to do with the time that frees up.
+
+The guide is built around a simple observation. In any software development cycle, product management mostly happens at two stages: planning and review. Marcus maps out how to hand those stages to AI agents, from writing your strategy all the way through to checking whether your shipped features are actually working. Here is what I found most useful.
+
+**Strategy comes first, and an agent should interview you to write it.** Every other part of the process (feature ideas, prioritization, specs) only works well if your strategy document is solid. The strategy answers four things: what problem you are solving and how, who the product is for, how you measure success, and what the main tracks of work are. The recommended way to write it is not to sit down and write it yourself. You run a command, the agent asks you questions section by section, and out comes a strategy.md file. It works better than writing it solo because the agent has built-in guidance on what a good answer looks like and pushes back if you are being vague.
+
+**Once your strategy is written, every other planning skill reads it automatically.** The guide describes a set of installable agent skills for ideating, brainstorming, planning and prioritizing. All of them pull from strategy.md as their grounding context before they do anything. That means you are not re-explaining your product to the agent every time you want to brainstorm a feature or write a spec. The strategy is the single source of truth and everything downstream inherits it.
+
+**Prioritization runs as a daily command, not a quarterly meeting.** Instead of doing big prioritization exercises every few months, the workflow includes a /prioritize command that runs every day. Because the agent already knows your strategy and has access to your backlog, it can surface what matters right now without you needing to set up a scoring framework or run a meeting to align the team on it.
+
+**Review is built into the loop, not bolted on at the end.** The guide includes a "product pulse" skill that checks your metrics after a feature has been live for a while. The output is a pulse report, and the planning skills are meant to read those reports when you kick off a new planning cycle. So the loop is genuinely closed: what you shipped and how it performed feeds directly into what you plan next, rather than sitting in an analytics tab that nobody checks.
+
+**One person can run a full product with this setup.** Marcus mentions his own situation here. He handles product, coding, customer support and marketing for Spiral himself. The workflow does not replace the thinking, it handles enough of the mechanical work that one person can cover ground that would normally need a whole team behind it.
+
+### People
+
+- **Marcus Moretti**, GM of Spiral at Every · [Every Profile](https://every.to/@marcus_fd8302_1)
+
+### Companies & Tools
+
+- **Every**: Media and product company publishing writing about AI, tools and business. Home to Spiral and several newsletters by founders and operators · [every.to](https://every.to)
+- **Spiral**: Every's AI co-writing product, built and run by Marcus as a solo operator
+
+### Resources
+
+- [A Guide to Agent-native Product Management](https://every.to/guides/ai-product-management-guide) - Marcus Moretti's practical guide to running the full PM workflow with AI agents: strategy, ideation, prioritization, specs and review
