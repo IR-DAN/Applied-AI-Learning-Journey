@@ -30,6 +30,15 @@ The article is written from a team context (the author is a manager at PostHog),
 
 **MCPs connect the agent to your actual stack.** MCP stands for Model Context Protocol and it is the layer that plugs Claude Code into the rest of your tools, PostHog, Slack, GitHub, whatever you use day to day. PostHog even ships their own official MCP so the agent can pull analytics data directly without you copying and pasting anything. Think of it as the difference between an assistant who only knows what you tell them in the moment, and one who can actually look things up in the systems you already use.
 
+The article lists several concrete MCP use cases the author actually runs:
+
+- **Slack: morning digest.** Every morning the agent surfaces Slack threads where the author was tagged but never replied, so nothing falls through the cracks without having to scroll back through the whole day.
+- **GitHub: objectives coherence check.** Every Monday it pulls the quarterly objectives from around 50 teams out of the GitHub repo, reads them all in one pass, and flags contradictions or teams using the same word to mean different things. That would take hours to do manually.
+- **GitHub: 1:1 prep.** Before each weekly 1:1, it searches every direct report's RFC and pull request activity for the week and writes the talking points directly into a subtask in the task manager, one per person.
+- **PostHog MCP: customer lookups.** Any question like "who is the TAM for this customer?" goes through the PostHog MCP, which runs a SQL query against their data warehouse and returns the answer. No more digging through spreadsheets or pinging someone on Slack.
+- **Linear / Notion: task writing.** The 1:1 prep output gets written straight into subtasks inside a recurring task in Linear or Notion, so the prep and the meeting notes live in the same place.
+- **Calendar: scheduling tasks.** The agent can read your calendar and factor it into scheduling-related tasks, though the author mentions this one is less central to their setup than the others.
+
 ### Companies & Tools
 
 - **PostHog**: Open-source product analytics platform I use daily. They also publish an official MCP that plugs directly into Claude Code · [posthog.com](https://posthog.com)
