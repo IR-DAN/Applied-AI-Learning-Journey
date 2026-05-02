@@ -89,7 +89,7 @@ The guide is built around a simple observation. In any software development cycl
 
 ## May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast
 
-A week ago, on April 22, Alibaba's Qwen team released Qwen3.6-27B. I only caught it today and it is worth documenting because it is one of those releases that makes you stop and think about how fast open source is moving.
+On April 22, Alibaba's Qwen team released Qwen3.6-27B. I caught it last week and it is worth documenting because it is one of those releases that makes you stop and think about how fast open source is moving.
 
 The short version: a 27 billion parameter model is now matching or beating models that are 14 times its size, and it is doing it on the kind of coding benchmarks that matter for real work. It is free to download, modify and deploy under the Apache 2.0 license. No API fees, no usage restrictions.
 
