@@ -16,27 +16,25 @@
 
 I decided to document my learnings in Applied AI and create a centralised place for all the resources, publicly available to everyone.
 
-I chose GitHub over Notion because it's easier to distribute — people can follow the repo and get notified when things change. It also feels more techie, and I like it here more than Notion.
+I went with GitHub over Notion because it's easier to distribute. People can follow the repo and get notified when things change. It also feels more techie and I like it here more than Notion.
 
-My first documented learning is an interesting blog post from **PostHog** on how to make Claude Code actually useful. I use PostHog a lot — basically daily — so when they wrote about their own experience adopting it, I paid attention. Up until now I had been playing more with **OpenClaw** and its extensive possibilities, but Claude Code seems to be a superior solution in terms of stability, UX, and security.
+My first documented learning is a blog post from **PostHog** on how to make Claude Code actually useful. I use PostHog a lot, basically daily, so when they wrote about their own experience adopting it I paid attention. Up until now I had been playing more with OpenClaw and its extensive possibilities, but Claude Code seems to be a superior solution in terms of stability, UX and security.
 
-The article is written from a team context (the author is a manager at PostHog), but the practical setup applies to anyone using Claude Code seriously.
+The article is written from a team context (the author is a manager at PostHog), but the setup is practical for anyone using Claude Code seriously. Here is what I took from it.
 
-**The key insight**: the highest-leverage thing you can do is ask the agent to come up with use cases tailored specifically to your work. Generic "top AI use cases" listicles are written for someone whose job is not your job — they don't help.
+**Start by asking the agent what to use it for.** The single most useful thing the author did was ask Claude to come up with use cases for his specific job. Not "top AI use cases for managers" from some listicle, but literally: here is what I do, here is what my team does, here is what I care about, now tell me where you would actually help. That question alone surfaces things you would never think to ask for yourself. Generic advice is written for someone whose job is not your job, so it rarely lands right.
 
-**Context files are the foundation.** Before you can automate anything, you need to give the agent context about who you are, your team, and your company. The author uses:
-- **CLAUDE.md** as the main index — who they are, their team's GitHub handles and Slack IDs, current focus areas, and standing preferences
-- **glossary.md** for company-specific acronyms and relevant Slack channels
+**Build context files before you do anything else.** Claude Code does not know anything about you by default. The author solves this with a set of markdown files the agent reads before every task. The main one is CLAUDE.md, which works like a personal index: who you are, your direct reports with their GitHub handles and Slack IDs, what you are currently focused on, and your preferences. Alongside that there is a glossary.md with company-specific acronyms and the Slack channels that matter. Without this layer, every conversation starts from zero. With it, the agent already knows your world before you type a single word.
 
-**Scheduled tasks beat on-demand chat.** The author finds background scheduled tasks far more valuable than the conversational interface. One concrete example: on the 8th of each month, a task reads a GitHub issue called "Things Charles cares about" — a running list of current priorities — and automatically refreshes CLAUDE.md with it. The context stays current without any manual upkeep.
+**Scheduled tasks are more valuable than chat.** This one surprised me. The author uses Claude Code less as a chatbot and more as a background worker that runs tasks on a schedule. One example he shares: on the 8th of every month, a task reads a GitHub issue called "Things Charles cares about", a list he keeps updated with his current priorities, and uses it to refresh CLAUDE.md automatically. The context never goes stale and he never has to do it manually. The idea is that the agent is not just answering questions, it is doing work while you are doing other things.
 
-**MCPs are the plumbing.** If scheduled tasks are the output layer and memory files are the context layer, MCPs (Model Context Protocols) are what connects the agent to the rest of your stack — PostHog, Slack, GitHub, and so on. PostHog even ships their own official MCP for Claude Code.
+**MCPs connect the agent to your actual stack.** MCP stands for Model Context Protocol and it is the layer that plugs Claude Code into the rest of your tools, PostHog, Slack, GitHub, whatever you use day to day. PostHog even ships their own official MCP so the agent can pull analytics data directly without you copying and pasting anything. Think of it as the difference between an assistant who only knows what you tell them in the moment, and one who can actually look things up in the systems you already use.
 
 ### Companies & Tools
 
-- **PostHog**: Open-source product analytics platform I use daily. They also publish a PostHog MCP that plugs directly into Claude Code · [posthog.com](https://posthog.com)
-- **Claude Code**: Anthropic's CLI for Claude. The AI coding tool I'm moving focus to after finding it more stable, polished, and secure than alternatives · [claude.ai/code](https://claude.ai/code)
+- **PostHog**: Open-source product analytics platform I use daily. They also publish an official MCP that plugs directly into Claude Code · [posthog.com](https://posthog.com)
+- **Claude Code**: Anthropic's CLI for Claude. The AI coding tool I am moving focus to after finding it more stable, polished and secure than alternatives · [claude.ai/code](https://claude.ai/code)
 
 ### Resources
 
-- [Making Claude Code Actually Useful](https://posthog.com/blog/making-claude-cowork-actually-useful) - PostHog's practical guide: context files, scheduled background tasks, and MCPs for getting real leverage from Claude Code
+- [Making Claude Code Actually Useful](https://posthog.com/blog/making-claude-cowork-actually-useful) - PostHog's practical guide to context files, scheduled background tasks and MCPs
