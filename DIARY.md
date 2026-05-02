@@ -39,6 +39,10 @@ The article lists several concrete MCP use cases the author actually runs:
 - **Linear / Notion: task writing.** The 1:1 prep output gets written straight into subtasks inside a recurring task in Linear or Notion, so the prep and the meeting notes live in the same place.
 - **Calendar: scheduling tasks.** The agent can read your calendar and factor it into scheduling-related tasks, though the author mentions this one is less central to their setup than the others.
 
+### People
+
+- **Charles Cook**, VP Operations & Marketing at PostHog · [LinkedIn](https://www.linkedin.com/in/wololo/)
+
 ### Companies & Tools
 
 - **PostHog**: Open-source product analytics platform I use daily. They also publish an official MCP that plugs directly into Claude Code · [posthog.com](https://posthog.com)
