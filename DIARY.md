@@ -10,6 +10,7 @@
 
 - [May 2, 2026 - Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful](#may-2-2026--why-github-over-notion-and-posthogs-guide-to-making-claude-code-actually-useful)
 - [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
+- [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
 
 ---
 
@@ -83,3 +84,31 @@ The guide is built around a simple observation. In any software development cycl
 ### Resources
 
 - [A Guide to Agent-native Product Management](https://every.to/guides/ai-product-management-guide) - Marcus Moretti's practical guide to running the full PM workflow with AI agents: strategy, ideation, prioritization, specs and review
+
+---
+
+## May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast
+
+A week ago, on April 22, Alibaba's Qwen team released Qwen3.6-27B. I only caught it today and it is worth documenting because it is one of those releases that makes you stop and think about how fast open source is moving.
+
+The short version: a 27 billion parameter model is now matching or beating models that are 14 times its size, and it is doing it on the kind of coding benchmarks that matter for real work. It is free to download, modify and deploy under the Apache 2.0 license. No API fees, no usage restrictions.
+
+**What the benchmarks actually say.** On SWE-bench Verified, which tests whether a model can resolve real GitHub issues in real codebases, Qwen3.6-27B scores 77.2%. Claude Opus 4.6 scores 80.8%. That is a gap of 3.7 points between a fully open model you can run locally and Anthropic's current flagship. On Terminal-Bench 2.0, Qwen3.6-27B scores 59.3%, which is exactly the same as Claude 4.5 Opus. The most striking number is SkillsBench: 48.2% versus 30.0% for Alibaba's own previous 397B model. It scores 77% higher on coding tasks with 14.8 times fewer parameters.
+
+**It is fully dense, not a mixture of experts.** A lot of large models save on compute by using a mixture-of-experts architecture, where only a fraction of the total parameters activate on any given input. Qwen3.6-27B does not do that. All 27 billion parameters run on every inference pass. Dense models are easier to fine-tune and behave more consistently than MoE models. The tradeoff is that they cost more to run per token, but at 27B on a single high-end GPU that cost is manageable.
+
+**Thinking Preservation is the new capability to watch.** The model keeps its reasoning trace across multi-turn conversations. In a normal setup, each conversation turn starts fresh and the model reasons from scratch each time. With Thinking Preservation, the chain of thought from the previous turn carries over. This matters a lot for agentic workflows where the model is working through a problem over many steps. It is described as the first open-source model to introduce this, which means it was previously something only proprietary models could do.
+
+**The context window is massive.** Native context is 262,144 tokens and it can be extended to 1,010,000 tokens. It also supports text, image and video inputs natively. Free, open, multimodal, and a million-token context window is a combination that did not exist in open source until now.
+
+The bigger picture is that the gap between the best open source models and frontier proprietary models is closing faster than most people expected. This is a theme I want to keep tracking in this diary.
+
+### Companies & Tools
+
+- **Qwen (Alibaba)**: Alibaba's open-source AI research lab behind the Qwen model family, consistently releasing competitive open-weight models that challenge the proprietary frontier · [qwenlm.github.io](https://qwenlm.github.io)
+- **HuggingFace**: Where the Qwen3.6-27B weights are hosted, free to download · [huggingface.co/Qwen/Qwen3.6-27B](https://huggingface.co/Qwen/Qwen3.6-27B)
+
+### Resources
+
+- [Qwen3.6-27B on HuggingFace](https://huggingface.co/Qwen/Qwen3.6-27B) - Model weights, architecture details and usage instructions
+- [Qwen Blog: Qwen3.6-27B](https://qwen.ai/blog?id=qwen3.6-27b) - Official release post from the Qwen team
