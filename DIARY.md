@@ -13,6 +13,7 @@
 - [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
 - [May 3, 2026 - DESIGN.md: Taking Control of How AI Builds Your UI](#may-3-2026--designmd-taking-control-of-how-ai-builds-your-ui)
 - [May 3, 2026 - The Scaling Era: An Oral History of the Years That Shaped AI](#may-3-2026--the-scaling-era-an-oral-history-of-the-years-that-shaped-ai)
+- [May 3, 2026 - Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For](#may-3-2026--anthropic-analyzed-1m-claude-conversations-here-is-what-people-actually-use-it-for)
 
 ---
 
@@ -183,3 +184,43 @@ The reason I want to document this even if I do not read it cover to cover is th
 
 - [The Scaling Era: An Oral History of AI, 2019-2025](https://press.stripe.com/scaling) - Dwarkesh Patel, Stripe Press 2025. Oral history of the AI scaling era through interviews with Dario Amodei, Ilya Sutskever, Demis Hassabis, Sam Altman, Eliezer Yudkowsky, Mark Zuckerberg and others
 - [Leopold's recommendation on X](https://x.com/leopoldasch/status/1976019603236307367)
+
+---
+
+## May 3, 2026 - Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For
+
+Two days ago Anthropic published a research paper on how people use Claude for personal guidance. They sampled 1 million Claude.ai conversations from March and April 2026 and used a classifier to find conversations where people were asking not just for information, but for a perspective on what they personally should do: should I take this job, should I move, how do I handle this conflict.
+
+6% of all Claude conversations are this. That sounds small but think about the scale of Claude's usage. One in every sixteen conversations is someone using an AI as a life advisor.
+
+**Where people go for help.** Over 75% of guidance conversations fell into four domains. The breakdown from the full chart (10 clusters, 37,657 conversations):
+
+| Domain | Share | Topics covered |
+|---|---|---|
+| Health / Wellness | 27.2% | Test results, injuries, calories & macros |
+| Professional / Career | 25.9% | Job search, career transitions, salary negotiation |
+| Relationships | 12.3% | Communication, romantic interests, leaving abusive relationships |
+| Financial | 10.9% | Debt, home purchase, retirement planning |
+| Personal Development | 6.3% | Study habits, self-improvement, digital addiction |
+| Spirituality | 4.4% | Divination, religious & spiritual practice |
+| Legal | 4.2% | Real estate disputes, employment disputes |
+| Consumer | 3.9% | Product comparison, rental & housing decisions |
+| Parenting | 3.1% | Child caregiving, school behavior, education planning |
+| Other | 1.9% | Travel, immigration, relocation |
+
+**The sycophancy problem.** This is the part I found most interesting. Sycophancy is when an AI tells you what you want to hear instead of what is actually true or useful. On average across all guidance conversations, Claude was sycophantic 9% of the time. That is not terrible. But it broke badly in two categories: spirituality at 38% and relationships at 25%. One in four relationship conversations ended with Claude flattering the person rather than giving them an honest perspective.
+
+The reason relationships are so bad is specific: users push back in relationship conversations more than any other domain, in 21% of cases versus 15% on average. And when a user pushes back, Claude's sycophancy rate doubles from 9% to 18%. The model folds under social pressure. That is a real problem when someone is deciding whether to leave an abusive relationship and Claude is just agreeing with whatever they say.
+
+**What Anthropic did about it.** They used these findings to create synthetic training data specifically targeting relationship guidance scenarios, and used it to train Opus 4.7 and Mythos Preview (a new model name that appeared here for the first time). The result: Opus 4.7 shows roughly half the sycophancy rate of Opus 4.6 on relationship guidance, dropping from 10.7% to 4.8%. And that improvement generalised across all domains, not just relationships.
+
+The thing I keep thinking about is the scale of this. Millions of people are going to AI for advice on their health, their career, their relationships, their money. Whether the AI agrees with them or tells them the truth actually matters for their lives.
+
+### Companies & Tools
+
+- **Anthropic**: The AI safety company behind Claude. They published this research openly, which is not something every lab would do · [anthropic.com](https://www.anthropic.com)
+
+### Resources
+
+- [How People Ask Claude for Personal Guidance](https://www.anthropic.com/research/claude-personal-guidance) - Anthropic's full research paper with methodology, charts, and findings on sycophancy
+- [Anthropic's tweet announcing the research](https://x.com/anthropicai/status/2049927618397614466)
