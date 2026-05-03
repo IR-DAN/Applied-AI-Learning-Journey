@@ -12,6 +12,7 @@
 - [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
 - [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
 - [May 3, 2026 - DESIGN.md: Taking Control of How AI Builds Your UI](#may-3-2026--designmd-taking-control-of-how-ai-builds-your-ui)
+- [May 3, 2026 - The Scaling Era: An Oral History of the Years That Shaped AI](#may-3-2026--the-scaling-era-an-oral-history-of-the-years-that-shaped-ai)
 
 ---
 
@@ -149,3 +150,36 @@ The broader point here is about taste. As vibe coding gets easier, the people wh
 
 - [Refero Styles](https://styles.refero.design) - Browse and download DESIGN.md files from the world's best products
 - [Original tweet by Mike Bespalov](https://x.com/bbssppllvv/status/2049924037111841027) - The post that introduced this resource
+
+---
+
+## May 3, 2026 - The Scaling Era: An Oral History of the Years That Shaped AI
+
+I stumbled across Leopold Aschenbrenner's X account today. If you do not know who he is, his story is worth looking into. He graduated as valedictorian from Columbia at 19, went to work at OpenAI's Superalignment team, and was fired in April 2024 in circumstances that are still disputed. He says it was for raising security concerns about foreign espionage. OpenAI says it was for leaking information. After getting fired he wrote "Situational Awareness", a 165-page manifesto predicting AGI by 2027 that went viral and even got praised by Ivanka Trump. He then used that attention to launch a hedge fund called Situational Awareness LP. In under a year he grew it from $225 million to $5.5 billion. He is 24 years old.
+
+On his account he was recommending a book called "The Scaling Era: An Oral History of AI, 2019-2025", published by Stripe Press in 2025. Leopold actually appears in the book himself as one of the people interviewed.
+
+I probably will not have time to read the whole thing, but I want to know what is in it. History matters here. AI is moving so fast that without knowing where it came from it is hard to understand where it is going.
+
+**What the book is.** The Scaling Era is by Dwarkesh Patel, host of the Dwarkesh Podcast, which is one of the most respected interview shows in the AI and technology space. Dwarkesh spent years doing deeply researched conversations with the people who built and shaped modern AI. This book is the curated highlights from those interviews, organised into a coherent narrative covering the years when scaling became the dominant paradigm in machine learning.
+
+**Who is in it.** The interviews include Dario Amodei (CEO of Anthropic), Demis Hassabis (CEO of Google DeepMind), Ilya Sutskever (OpenAI cofounder), Sam Altman (CEO of OpenAI), Eliezer Yudkowsky (AI safety, MIRI), Mark Zuckerberg (CEO of Meta), Jan Leike (former OpenAI alignment lead), Carl Shulman, and Leopold himself. These are the people who were actually in the room during those years, talking in their own words about what they were thinking and doing.
+
+**What it covers.** The period 2019 to 2025 is when scaling became consensus: more data, more compute, bigger models. The book traces how that hypothesis became institutional dogma, what it produced, and what it means for the future. It covers alignment and the risk of misaligned AI, what AGI might look like economically and socially, and where things go next. It also comes with 170+ definitions and visualisations, technical explainers, classic essays, and some unpublished interviews.
+
+The reason I want to document this even if I do not read it cover to cover is that primary sources like this are rare. Most writing about AI history comes from journalists on the outside. This is the people who built it, in their own words.
+
+### People
+
+- **Leopold Aschenbrenner**, Founder and CIO of Situational Awareness LP, former OpenAI Superalignment researcher · [LinkedIn](https://www.linkedin.com/in/leopold-aschenbrenner/) · [X](https://x.com/leopoldasch)
+- **Dwarkesh Patel**, Author of The Scaling Era, Host of the Dwarkesh Podcast · [LinkedIn](https://www.linkedin.com/in/dwarkesh-sp/)
+
+### Companies & Tools
+
+- **Situational Awareness LP**: Leopold's AI-focused hedge fund. Grew from $225M to $5.5B in under a year, concentrated in AI infrastructure and power
+- **Stripe Press**: Stripe's publishing arm, known for high-quality books at the intersection of technology, business and ideas · [press.stripe.com](https://press.stripe.com)
+
+### Resources
+
+- [The Scaling Era: An Oral History of AI, 2019-2025](https://press.stripe.com/scaling) - Dwarkesh Patel, Stripe Press 2025. Oral history of the AI scaling era through interviews with Dario Amodei, Ilya Sutskever, Demis Hassabis, Sam Altman, Eliezer Yudkowsky, Mark Zuckerberg and others
+- [Leopold's recommendation on X](https://x.com/leopoldasch/status/1976019603236307367)
