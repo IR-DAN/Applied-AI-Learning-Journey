@@ -11,6 +11,7 @@
 - [May 2, 2026 - Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful](#may-2-2026--why-github-over-notion-and-posthogs-guide-to-making-claude-code-actually-useful)
 - [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
 - [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
+- [May 3, 2026 - DESIGN.md: Taking Control of How AI Builds Your UI](#may-3-2026--designmd-taking-control-of-how-ai-builds-your-ui)
 
 ---
 
@@ -114,3 +115,37 @@ The bigger picture is that the gap between the best open source models and front
 
 - [Qwen3.6-27B on HuggingFace](https://huggingface.co/Qwen/Qwen3.6-27B) - Model weights, architecture details and usage instructions
 - [Qwen Blog: Qwen3.6-27B](https://qwen.ai/blog?id=qwen3.6-27b) - Official release post from the Qwen team
+
+---
+
+## May 3, 2026 - DESIGN.md: Taking Control of How AI Builds Your UI
+
+I came across a tweet from Mike Bespalov, the founder of Refero, that put something into words I had been feeling for a while.
+
+"Agents make ugly UIs because they've never seen good design."
+
+That is the problem. When you vibe code a UI and just let the AI decide, you get something generic. It is functional but it looks like every other AI-generated interface. The reason is not that the model is bad at code, it is that the model has no taste. It has never been trained to study what makes Stripe's UI feel trustworthy, or why Linear's spacing feels so clean. So it defaults to average.
+
+The solution Mike built is a collection of 2,000 DESIGN.md files from the world's best products, structured for a model to read and understand before it writes a single line of UI code.
+
+**What a DESIGN.md file actually is.** It is a single markdown file that describes your entire design system: colors, typography, spacing, components, dos and donts. The format is an open spec originally from Google Labs. When you drop a DESIGN.md into your project, Claude Code or Cursor reads it before generating any UI. Every component it creates follows the rules in that file. Instead of the agent inventing the design from scratch, it is working from a defined visual language.
+
+**How Refero Styles works.** The site is a catalog of DESIGN.md files extracted from real products like Stripe, Linear, Notion, Figma and Vercel. You browse the catalog, pick the design style closest to what you want, drop the file into your project, and the agent generates UI that matches that aesthetic. You are no longer at the mercy of whatever the model decides looks good.
+
+**There is also an MCP.** Refero ships an MCP so Claude Code can search the catalog directly in natural language. You describe the vibe you are going for and the agent finds the closest matching style and drops a generated DESIGN.md into your project before it starts building. That means the design language is locked in from the very first component.
+
+The broader point here is about taste. As vibe coding gets easier, the people who put thought into design and take control of it will stand out. If everyone just lets the AI decide, everything ends up looking the same.
+
+### People
+
+- **Mike Bespalov**, Founder of Refero · [LinkedIn](https://www.linkedin.com/in/bespalov-mike) · [X](https://x.com/bbssppllvv)
+
+### Companies & Tools
+
+- **Refero Styles**: Catalog of 2,000 DESIGN.md files from top products, ready to drop into any AI coding project · [styles.refero.design](https://styles.refero.design)
+- **Refero MCP**: MCP server that lets Claude Code search Refero's design catalog and generate a DESIGN.md for your project · [refero.design/mcp](https://refero.design/mcp)
+
+### Resources
+
+- [Refero Styles](https://styles.refero.design) - Browse and download DESIGN.md files from the world's best products
+- [Original tweet by Mike Bespalov](https://x.com/bbssppllvv/status/2049924037111841027) - The post that introduced this resource
