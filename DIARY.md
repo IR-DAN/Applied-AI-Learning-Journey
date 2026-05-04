@@ -242,6 +242,8 @@ Here is what Boris said in full:
 
 This is not a Scala book in the sense that you need to use Scala. It is a book about a way of thinking. Boris built Claude Code in TypeScript, not Scala. But the mental model he carries, thinking in types first, code second, clearly comes from somewhere.
 
+This is probably overkill for most people. It requires a real coding foundation to get anything out of it, and some would argue that as coding itself gets automated, going this deep into how to write code is no longer worth the time. Maybe they are right. But I think people who understand the underlying concepts, not just the syntax, are going to be incredibly favored going forward. Knowing why code works a certain way, even if you are not the one writing it, is a very different skill from just prompting an agent to build something.
+
 ### People
 
 - **Boris Cherny**, Head of Claude Code at Anthropic, creator of Claude Code, ex-Principal Engineer at Meta · [LinkedIn](https://www.linkedin.com/in/bcherny/)
