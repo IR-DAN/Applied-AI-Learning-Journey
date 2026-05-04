@@ -15,6 +15,7 @@
 - [May 3, 2026 - The Scaling Era: An Oral History of the Years That Shaped AI](#may-3-2026--the-scaling-era-an-oral-history-of-the-years-that-shaped-ai)
 - [May 3, 2026 - Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For](#may-3-2026--anthropic-analyzed-1m-claude-conversations-here-is-what-people-actually-use-it-for)
 - [May 4, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala](#may-4-2026--boris-chernys-one-book-recommendation-functional-programming-in-scala)
+- [May 4, 2026 - Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually](#may-4-2026--google-codewiki-drop-any-github-repo-and-walk-through-it-visually)
 
 ---
 
@@ -253,3 +254,30 @@ This is probably overkill for most people. It requires a real coding foundation 
 
 - [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala-second-edition) - Paul Chiusano and Rúnar Bjarnason, Manning. Boris Cherny's single most recommended technical book
 - [Ryan Peterman's post quoting Boris](https://x.com/ryanlpeterman/status/2044408902763114650)
+
+---
+
+## May 4, 2026 - Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually
+
+Google just released something I think is genuinely incredible. It is called Code Wiki and it is at codewiki.google. You drop any public GitHub repo into it and it generates a full interactive documentation site for that codebase, automatically. Architecture diagrams, visual walkthroughs, a chat agent that can answer questions about the code. All of it.
+
+This is huge for anyone trying to understand an unfamiliar codebase, which is something that used to take days.
+
+**What it actually generates.** For any repo you submit, Code Wiki produces architecture diagrams, class diagrams, and sequence diagrams that show how the different parts of the code relate to each other. It also produces module-by-module written walkthroughs. Every section links directly to the exact lines of source code it is describing, so you can jump straight from the explanation to the thing being explained.
+
+**The Gemini chat agent.** On top of the generated documentation, there is a Gemini-powered chat interface where you can ask questions in plain language. Things like "how does authentication work in this repo?" or "which services depend on the user database?" and it answers using the wiki as context, with links to the relevant parts of the code. This is the part that changes how you onboard to a new codebase.
+
+**Video explainers.** It also creates short video walkthroughs of how specific parts of the codebase work, with each frame linking to the exact source code line it is referencing. So you can watch it being explained rather than read through it.
+
+**It stays current.** Every time a pull request is merged, the documentation updates automatically. So the wiki does not go stale the way every other documentation always does.
+
+The use case I immediately thought of: any time you want to understand a tool or library you are using, or before you fork something, or when you are onboarding to a new project at work. You used to have to read through the code yourself or find someone to explain it. Now you just drop it in here.
+
+### Companies & Tools
+
+- **Google Code Wiki**: Google's free tool for turning any public GitHub repo into interactive, always-current documentation with diagrams, walkthroughs, and a Gemini chat agent · [codewiki.google](https://codewiki.google)
+
+### Resources
+
+- [Google Code Wiki](https://codewiki.google) - Drop any public GitHub repo and get architecture diagrams, module walkthroughs, video explainers, and a Gemini chat agent
+- [Google Developers Blog announcement](https://developers.googleblog.com/introducing-code-wiki-accelerating-your-code-understanding/) - The original launch post from Google
