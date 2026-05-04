@@ -14,6 +14,7 @@
 - [May 3, 2026 - DESIGN.md: Taking Control of How AI Builds Your UI](#may-3-2026--designmd-taking-control-of-how-ai-builds-your-ui)
 - [May 3, 2026 - The Scaling Era: An Oral History of the Years That Shaped AI](#may-3-2026--the-scaling-era-an-oral-history-of-the-years-that-shaped-ai)
 - [May 3, 2026 - Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For](#may-3-2026--anthropic-analyzed-1m-claude-conversations-here-is-what-people-actually-use-it-for)
+- [May 3, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala](#may-3-2026--boris-chernys-one-book-recommendation-functional-programming-in-scala)
 
 ---
 
@@ -224,3 +225,29 @@ The thing I keep thinking about is the scale of this. Millions of people are goi
 
 - [How People Ask Claude for Personal Guidance](https://www.anthropic.com/research/claude-personal-guidance) - Anthropic's full research paper with methodology, charts, and findings on sycophancy
 - [Anthropic's tweet announcing the research](https://x.com/anthropicai/status/2049927618397614466)
+
+---
+
+## May 3, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala
+
+I came across a post from Ryan Peterman quoting Boris Cherny, the creator of Claude Code. Boris was asked for the one technical book that had the greatest impact on him as an engineer. His answer was Functional Programming in Scala.
+
+I probably will not have time to read it any time soon, but when the person who built Claude Code tells you a book completely changed the way he thinks about coding, it deserves to be documented.
+
+Here is what Boris said in full:
+
+> "The one technical book I would recommend to everyone that has had the greatest impact on me as an engineer is Functional Programming in Scala. You're probably never going to use Scala day to day, but the way it teaches you to think about coding problems is just such a change from the way that most people were taught coding, either practically or in school. It's going to completely change the way that you code. I think in types when I code. The thing that matters in your code the most is the type signatures. This is more important than the code itself."
+
+**What the book actually teaches.** The book is by Paul Chiusano and Rúnar Bjarnason, published by Manning. The core idea is that you should build programs using only pure functions, meaning functions with no side effects. Everything is a transformation of data through the type system. The book teaches you how to use and design type classes like Monoids and Monads, and how to let the types guide your implementation. The insight Boris is pointing at is that if you get the types right, the code almost writes itself. If you are fighting the types, you are probably solving the wrong problem.
+
+This is not a Scala book in the sense that you need to use Scala. It is a book about a way of thinking. Boris built Claude Code in TypeScript, not Scala. But the mental model he carries, thinking in types first, code second, clearly comes from somewhere.
+
+### People
+
+- **Boris Cherny**, Head of Claude Code at Anthropic, creator of Claude Code, ex-Principal Engineer at Meta · [LinkedIn](https://www.linkedin.com/in/bcherny/)
+- **Ryan Peterman**, ex-Staff Engineer at Instagram, newsletter writer for engineers · [LinkedIn](https://www.linkedin.com/in/ryanlpeterman/)
+
+### Resources
+
+- [Functional Programming in Scala](https://www.manning.com/books/functional-programming-in-scala-second-edition) - Paul Chiusano and Rúnar Bjarnason, Manning. Boris Cherny's single most recommended technical book
+- [Ryan Peterman's post quoting Boris](https://x.com/ryanlpeterman/status/2044408902763114650)
