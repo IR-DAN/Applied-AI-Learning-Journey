@@ -14,7 +14,7 @@
 - [May 3, 2026 - DESIGN.md: Taking Control of How AI Builds Your UI](#may-3-2026--designmd-taking-control-of-how-ai-builds-your-ui)
 - [May 3, 2026 - The Scaling Era: An Oral History of the Years That Shaped AI](#may-3-2026--the-scaling-era-an-oral-history-of-the-years-that-shaped-ai)
 - [May 3, 2026 - Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For](#may-3-2026--anthropic-analyzed-1m-claude-conversations-here-is-what-people-actually-use-it-for)
-- [May 3, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala](#may-3-2026--boris-chernys-one-book-recommendation-functional-programming-in-scala)
+- [May 4, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala](#may-4-2026--boris-chernys-one-book-recommendation-functional-programming-in-scala)
 
 ---
 
@@ -228,7 +228,7 @@ The thing I keep thinking about is the scale of this. Millions of people are goi
 
 ---
 
-## May 3, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala
+## May 4, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala
 
 I came across a post from Ryan Peterman quoting Boris Cherny, the creator of Claude Code. Boris was asked for the one technical book that had the greatest impact on him as an engineer. His answer was Functional Programming in Scala.
 
