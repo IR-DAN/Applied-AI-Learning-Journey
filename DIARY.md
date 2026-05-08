@@ -16,6 +16,7 @@
 - [May 3, 2026 - Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For](#may-3-2026--anthropic-analyzed-1m-claude-conversations-here-is-what-people-actually-use-it-for)
 - [May 4, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala](#may-4-2026--boris-chernys-one-book-recommendation-functional-programming-in-scala)
 - [May 4, 2026 - Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually](#may-4-2026--google-codewiki-drop-any-github-repo-and-walk-through-it-visually)
+- [May 8, 2026 - HTML Might Be a Better Format Than Markdown for Storing Knowledge](#may-8-2026--html-might-be-a-better-format-than-markdown-for-storing-knowledge)
 
 ---
 
@@ -281,3 +282,30 @@ The use case I immediately thought of: any time you want to understand a tool or
 
 - [Google Code Wiki](https://codewiki.google) - Drop any public GitHub repo and get architecture diagrams, module walkthroughs, video explainers, and a Gemini chat agent
 - [Google Developers Blog announcement](https://developers.googleblog.com/introducing-code-wiki-accelerating-your-code-understanding/) - The original launch post from Google
+
+---
+
+## May 8, 2026 - HTML Might Be a Better Format Than Markdown for Storing Knowledge
+
+I came across a post from Thariq Shihipar, who works on Claude Code at Anthropic, arguing that HTML is actually a superior format to Markdown for storing and presenting information. It made me stop and think seriously about this repo.
+
+Right now everything here is Markdown on GitHub. It works, but it is flat. No real layout, no visual hierarchy beyond headings and bullets, no way to make things scroll nicely or feel designed. The post made me think about whether a scrollable hosted HTML website would be a better home for this diary long term.
+
+**Why Markdown became the default.** Markdown won because it is simple to write, renders cleanly on GitHub, diffs well in version control, and is easy for AI agents to read. It removes the overhead of thinking about presentation and lets you focus on content. That is genuinely valuable, and it is why this repo started in Markdown.
+
+**What HTML can do that Markdown cannot.** HTML gives you spatial control. You can add margin notes alongside paragraphs, render call-graphs as actual boxes and arrows showing how things relate, embed inline SVG diagrams that illustrate a concept visually, and build side-by-side comparisons. None of this is possible in plain Markdown. Markdown is linear, top to bottom, full stop. HTML can show relationships, not just describe them.
+
+**Richness of representation.** A well-structured HTML page can have collapsible sections, sticky navigation, scroll-linked animations, highlighted callouts, tables that actually look like tables, and images that sit in context rather than breaking the flow. The reading experience is just fundamentally different. A diary like this one, where each entry is a self-contained learning moment, could be much more navigable as a scrollable web page with a sidebar than as a long flat Markdown file.
+
+**The honest tradeoff.** Markdown is still better for writing quickly, for version control diffs, and for AI agents that parse content. HTML requires more upfront work and some design decisions. But if the goal is a knowledge base people actually enjoy reading, not just a file they can grep through, HTML wins.
+
+I am genuinely considering moving this repo to a hosted HTML website. The content would stay the same but the experience of reading it would be much better.
+
+### People
+
+- **Thariq Shihipar**, Engineer on Claude Code at Anthropic, previously founded a YC-backed gaming company, MIT Media Lab · [LinkedIn](https://www.linkedin.com/in/thariqshihipar/) · [X](https://x.com/trq212)
+
+### Resources
+
+- [The Unreasonable Effectiveness of HTML](https://thariqs.github.io/html-effectiveness/) - Thariq Shihipar's post with examples of what HTML can express that Markdown cannot
+- [Thariq's tweet](https://x.com/trq212/status/2052809885763747935)
