@@ -4,9 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Applied AI Learning Diary</title>
+<meta name="description" content="A day-by-day record of an applied AI learning journey, shared openly to encourage others.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Applied AI Learning Diary">
+<meta property="og:description" content="A day-by-day record of an applied AI learning journey, shared openly to encourage others.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%238250df'/><text x='8' y='12' text-anchor='middle' fill='white' font-family='-apple-system,sans-serif' font-weight='700' font-size='10'>D</text></svg>">
 <style>
   :root {
     --bg: #fdfdfc;
+    --surface: #ffffff;
     --text: #1f2328;
     --muted: #57606a;
     --accent: #8250df;
@@ -16,6 +24,43 @@
     --quote-border: #d0d7de;
     --link: #0969da;
     --max-content: 720px;
+
+    --day-may2: #8250df;
+    --day-may2-soft: #f6f0ff;
+    --day-may3: #1f6feb;
+    --day-may3-soft: #ddf4ff;
+    --day-may4: #2da44e;
+    --day-may4-soft: #dafbe1;
+    --day-may8: #d97706;
+    --day-may8-soft: #fff8c5;
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #a371f7;
+      --accent-soft: rgba(163, 113, 247, 0.14);
+      --border: #30363d;
+      --code-bg: #161b22;
+      --quote-border: #30363d;
+      --link: #58a6ff;
+
+      --day-may2: #a371f7;
+      --day-may2-soft: rgba(163, 113, 247, 0.14);
+      --day-may3: #58a6ff;
+      --day-may3-soft: rgba(88, 166, 255, 0.14);
+      --day-may4: #3fb950;
+      --day-may4-soft: rgba(63, 185, 80, 0.14);
+      --day-may8: #f59e0b;
+      --day-may8-soft: rgba(245, 158, 11, 0.14);
+    }
   }
 
   * { box-sizing: border-box; }
@@ -24,11 +69,23 @@
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--font-sans);
     font-size: 17px;
     line-height: 1.65;
     color: var(--text);
     background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--day-may2), var(--day-may3), var(--day-may4), var(--day-may8));
+    z-index: 100;
+    transition: width 60ms linear;
   }
 
   .layout {
@@ -51,41 +108,65 @@
   }
 
   aside.sidebar h2 {
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: var(--muted);
-    margin: 0 0 12px 0;
+    margin: 0 0 18px 0;
+    font-weight: 600;
   }
 
-  aside.sidebar ol {
+  aside.sidebar nav.toc { display: flex; flex-direction: column; gap: 18px; }
+
+  aside.sidebar .day-group { display: flex; flex-direction: column; gap: 6px; }
+
+  aside.sidebar .day-tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  aside.sidebar .day-tag.day-may2 { color: var(--day-may2); background: var(--day-may2-soft); }
+  aside.sidebar .day-tag.day-may3 { color: var(--day-may3); background: var(--day-may3-soft); }
+  aside.sidebar .day-tag.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
+  aside.sidebar .day-tag.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
+
+  aside.sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    counter-reset: toc;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  aside.sidebar li {
-    counter-increment: toc;
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-
-  aside.sidebar li::before {
-    content: counter(toc) ".";
-    color: var(--muted);
-    margin-right: 6px;
-    font-variant-numeric: tabular-nums;
-  }
+  aside.sidebar li { margin: 0; line-height: 1.35; }
 
   aside.sidebar a {
-    color: var(--text);
+    display: block;
+    color: var(--muted);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13.5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, background 0.12s, border-color 0.12s;
   }
 
   aside.sidebar a:hover {
-    color: var(--accent);
+    color: var(--text);
+    background: var(--accent-soft);
+  }
+
+  aside.sidebar a.active {
+    color: var(--text);
+    background: var(--accent-soft);
+    border-left-color: var(--accent);
+    font-weight: 500;
   }
 
   main {
@@ -94,27 +175,55 @@
   }
 
   header.intro {
-    margin-bottom: 64px;
-    padding-bottom: 32px;
+    margin-bottom: 72px;
+    padding: 16px 0 40px 0;
     border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  header.intro::before {
+    content: "";
+    position: absolute;
+    inset: -40px -40px auto auto;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 50%;
+  }
+
+  header.intro .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-weight: 600;
   }
 
   header.intro h1 {
-    font-size: 40px;
-    margin: 0 0 16px 0;
-    letter-spacing: -0.02em;
+    font-size: 48px;
+    line-height: 1.05;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.025em;
+    font-weight: 700;
   }
 
   header.intro .tagline {
+    font-family: var(--font-serif);
     font-style: italic;
     color: var(--muted);
     margin: 0;
+    font-size: 18px;
   }
 
   article.entry {
     margin-bottom: 80px;
     padding-bottom: 48px;
     border-bottom: 1px solid var(--border);
+    scroll-margin-top: 32px;
   }
 
   article.entry:last-of-type {
@@ -122,34 +231,71 @@
   }
 
   article.entry > header {
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
   article.entry .date {
     display: inline-block;
-    font-size: 13px;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
     color: var(--accent);
     background: var(--accent-soft);
     padding: 4px 10px;
     border-radius: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-weight: 600;
   }
+  article.entry .date.day-may2 { color: var(--day-may2); background: var(--day-may2-soft); }
+  article.entry .date.day-may3 { color: var(--day-may3); background: var(--day-may3-soft); }
+  article.entry .date.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
+  article.entry .date.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
 
   article.entry h2 {
-    font-size: 28px;
-    line-height: 1.25;
+    font-size: 30px;
+    line-height: 1.2;
     margin: 0;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.018em;
+    font-weight: 700;
+    position: relative;
   }
 
-  article.entry h3 {
-    font-size: 18px;
-    margin: 36px 0 12px 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  article.entry h2 .anchor {
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--muted);
+    text-decoration: none;
+    opacity: 0;
+    font-weight: 400;
+    font-size: 22px;
+    transition: opacity 0.15s;
+  }
+  article.entry h2:hover .anchor { opacity: 0.6; }
+  article.entry h2 .anchor:hover { opacity: 1; color: var(--accent); }
+
+  article.entry h3 {
+    font-size: 12px;
+    margin: 40px 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  article.entry p,
+  article.entry > ul li,
+  article.entry > ol li {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  article.entry h3 + ul li {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   p { margin: 0 0 18px 0; }
@@ -159,15 +305,30 @@
 
   strong { color: var(--text); font-weight: 600; }
 
+  code, .file {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    color: var(--text);
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
   blockquote {
     margin: 0 0 24px 0;
-    padding: 4px 18px;
+    padding: 8px 22px;
     border-left: 4px solid var(--accent);
     color: var(--muted);
     background: var(--accent-soft);
     border-radius: 0 6px 6px 0;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.65;
   }
 
+  blockquote p { font-family: var(--font-serif); }
   blockquote p:last-child { margin-bottom: 12px; }
 
   ul { padding-left: 22px; margin: 0 0 18px 0; }
@@ -223,7 +384,7 @@
   }
   .chart-row .label { color: var(--text); text-align: right; }
   .chart-row .value { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
-  .chart-row .track { height: 14px; background: #fff; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; position: relative; }
+  .chart-row .track { height: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; position: relative; }
   .chart-row .fill { height: 100%; background: var(--accent); }
   .chart-row.alt .fill { background: #d97706; }
   .chart-row.muted-fill .fill { background: #8b949e; }
@@ -274,7 +435,7 @@
     word-wrap: break-word;
     margin: 0;
   }
-  .compare .html-side { background: #fff; }
+  .compare .html-side { background: var(--surface); }
   .compare .side-label {
     font-size: 10px;
     text-transform: uppercase;
@@ -306,6 +467,27 @@
   }
   .mini-svg { display: block; margin: 8px 0; }
   .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+  /* Reset font family for non-prose paragraphs inside articles */
+  article.entry .chart p,
+  article.entry .chart .chart-title,
+  article.entry .diagram p,
+  article.entry .compare p,
+  article.entry .compare .side-label,
+  article.entry .pill-row,
+  article.entry .chart-row .label,
+  article.entry .chart-row .value,
+  article.entry .chart-row,
+  article.entry .chart-grouped .group-label,
+  article.entry .diagram .caption {
+    font-family: var(--font-sans);
+  }
+
+  /* SVG colour reactivity for dark mode */
+  .diagram svg rect[fill="#fff"],
+  .compare .html-side .mini-svg rect[fill="#fff"] {
+    fill: var(--surface);
+  }
+
   .pill-row .pill {
     background: var(--accent-soft);
     color: var(--accent);
@@ -334,24 +516,47 @@
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
 <div class="layout">
   <aside class="sidebar">
     <h2>Entries</h2>
-    <ol>
-      <li><a href="#may-2-2026-posthog">May 2, 2026 — Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful</a></li>
-      <li><a href="#may-3-2026-pm">May 3, 2026 — How AI Is Changing the Product Manager's Job</a></li>
-      <li><a href="#may-3-2026-qwen">May 3, 2026 — Qwen3.6-27B: Open Source Catching Up Fast</a></li>
-      <li><a href="#may-3-2026-design">May 3, 2026 — DESIGN.md: Taking Control of How AI Builds Your UI</a></li>
-      <li><a href="#may-3-2026-scaling">May 3, 2026 — The Scaling Era: An Oral History</a></li>
-      <li><a href="#may-3-2026-anthropic">May 3, 2026 — Anthropic Analyzed 1M Claude Conversations</a></li>
-      <li><a href="#may-4-2026-boris">May 4, 2026 — Boris Cherny's One Book Recommendation</a></li>
-      <li><a href="#may-4-2026-codewiki">May 4, 2026 — Google CodeWiki</a></li>
-      <li><a href="#may-8-2026-html">May 8, 2026 — HTML Might Be a Better Format Than Markdown</a></li>
-    </ol>
+    <nav class="toc">
+      <div class="day-group">
+        <span class="day-tag day-may2">May 2, 2026</span>
+        <ul>
+          <li><a href="#may-2-2026-posthog">PostHog's guide to making Claude Code useful</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may3">May 3, 2026</span>
+        <ul>
+          <li><a href="#may-3-2026-pm">AI is changing the PM's job</a></li>
+          <li><a href="#may-3-2026-qwen">Qwen3.6-27B catching up fast</a></li>
+          <li><a href="#may-3-2026-design">DESIGN.md and AI-built UI</a></li>
+          <li><a href="#may-3-2026-scaling">The Scaling Era oral history</a></li>
+          <li><a href="#may-3-2026-anthropic">Anthropic's 1M-conversation study</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may4">May 4, 2026</span>
+        <ul>
+          <li><a href="#may-4-2026-boris">Boris Cherny's one book</a></li>
+          <li><a href="#may-4-2026-codewiki">Google CodeWiki</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may8">May 8, 2026</span>
+        <ul>
+          <li><a href="#may-8-2026-html">HTML vs Markdown for knowledge</a></li>
+        </ul>
+      </div>
+    </nav>
   </aside>
 
   <main>
     <header class="intro">
+      <span class="eyebrow">A learning journal</span>
       <h1>Applied AI Learning Diary</h1>
       <blockquote>
         <p>A day-by-day record of my applied AI learning journey, shared openly to encourage others.</p>
@@ -361,8 +566,8 @@
 
     <article class="entry" id="may-2-2026-posthog">
       <header>
-        <span class="date">May 2, 2026</span>
-        <h2>Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful</h2>
+        <span class="date day-may2">May 2, 2026</span>
+        <h2><a class="anchor" href="#may-2-2026-posthog" aria-label="Link to this entry">#</a>Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful</h2>
       </header>
 
       <p>I decided to document my learnings in Applied AI and create a centralised place for all the resources, publicly available to everyone.</p>
@@ -375,9 +580,9 @@
 
       <p><strong>Start by asking the agent what to use it for.</strong> The single most useful thing the author did was ask Claude to come up with use cases for his specific job. Not "top AI use cases for managers" from some listicle, but literally: here is what I do, here is what my team does, here is what I care about, now tell me where you would actually help. That question alone surfaces things you would never think to ask for yourself. Generic advice is written for someone whose job is not your job, so it rarely lands right.</p>
 
-      <p><strong>Build context files before you do anything else.</strong> Claude Code does not know anything about you by default. The author solves this with a set of markdown files the agent reads before every task. The main one is CLAUDE.md, which works like a personal index: who you are, your direct reports with their GitHub handles and Slack IDs, what you are currently focused on, and your preferences. Alongside that there is a glossary.md with company-specific acronyms and the Slack channels that matter. Without this layer, every conversation starts from zero. With it, the agent already knows your world before you type a single word.</p>
+      <p><strong>Build context files before you do anything else.</strong> Claude Code does not know anything about you by default. The author solves this with a set of markdown files the agent reads before every task. The main one is <code>CLAUDE.md</code>, which works like a personal index: who you are, your direct reports with their GitHub handles and Slack IDs, what you are currently focused on, and your preferences. Alongside that there is a <code>glossary.md</code> with company-specific acronyms and the Slack channels that matter. Without this layer, every conversation starts from zero. With it, the agent already knows your world before you type a single word.</p>
 
-      <p><strong>Scheduled tasks are more valuable than chat.</strong> This one surprised me. The author uses Claude Code less as a chatbot and more as a background worker that runs tasks on a schedule. One example he shares: on the 8th of every month, a task reads a GitHub issue called "Things Charles cares about", a list he keeps updated with his current priorities, and uses it to refresh CLAUDE.md automatically. The context never goes stale and he never has to do it manually. The idea is that the agent is not just answering questions, it is doing work while you are doing other things.</p>
+      <p><strong>Scheduled tasks are more valuable than chat.</strong> This one surprised me. The author uses Claude Code less as a chatbot and more as a background worker that runs tasks on a schedule. One example he shares: on the 8th of every month, a task reads a GitHub issue called "Things Charles cares about", a list he keeps updated with his current priorities, and uses it to refresh <code>CLAUDE.md</code> automatically. The context never goes stale and he never has to do it manually. The idea is that the agent is not just answering questions, it is doing work while you are doing other things.</p>
 
       <p><strong>MCPs connect the agent to your actual stack.</strong> MCP stands for Model Context Protocol and it is the layer that plugs Claude Code into the rest of your tools, PostHog, Slack, GitHub, whatever you use day to day. PostHog even ships their own official MCP so the agent can pull analytics data directly without you copying and pasting anything. Think of it as the difference between an assistant who only knows what you tell them in the moment, and one who can actually look things up in the systems you already use.</p>
 
@@ -457,19 +662,19 @@
 
     <article class="entry" id="may-3-2026-pm">
       <header>
-        <span class="date">May 3, 2026</span>
-        <h2>How AI Is Changing the Product Manager's Job, and What to Do About It</h2>
+        <span class="date day-may3">May 3, 2026</span>
+        <h2><a class="anchor" href="#may-3-2026-pm" aria-label="Link to this entry">#</a>How AI Is Changing the Product Manager's Job, and What to Do About It</h2>
       </header>
 
       <p>I came across a guide on Every called "A Guide to Agent-native Product Management" by Marcus Moretti, who runs Spiral, Every's AI writing product, largely as a solo operator. The premise hit close to home: a lot of what product managers do every day is routine, screen-based work that LLMs can now do just as well or better. The question is what to do with the time that frees up.</p>
 
       <p>The guide is built around a simple observation. In any software development cycle, product management mostly happens at two stages: planning and review. Marcus maps out how to hand those stages to AI agents, from writing your strategy all the way through to checking whether your shipped features are actually working. Here is what I found most useful.</p>
 
-      <p><strong>Strategy comes first, and an agent should interview you to write it.</strong> Every other part of the process (feature ideas, prioritization, specs) only works well if your strategy document is solid. The strategy answers four things: what problem you are solving and how, who the product is for, how you measure success, and what the main tracks of work are. The recommended way to write it is not to sit down and write it yourself. You run a command, the agent asks you questions section by section, and out comes a strategy.md file. It works better than writing it solo because the agent has built-in guidance on what a good answer looks like and pushes back if you are being vague.</p>
+      <p><strong>Strategy comes first, and an agent should interview you to write it.</strong> Every other part of the process (feature ideas, prioritization, specs) only works well if your strategy document is solid. The strategy answers four things: what problem you are solving and how, who the product is for, how you measure success, and what the main tracks of work are. The recommended way to write it is not to sit down and write it yourself. You run a command, the agent asks you questions section by section, and out comes a <code>strategy.md</code> file. It works better than writing it solo because the agent has built-in guidance on what a good answer looks like and pushes back if you are being vague.</p>
 
-      <p><strong>Once your strategy is written, every other planning skill reads it automatically.</strong> The guide describes a set of installable agent skills for ideating, brainstorming, planning and prioritizing. All of them pull from strategy.md as their grounding context before they do anything. That means you are not re-explaining your product to the agent every time you want to brainstorm a feature or write a spec. The strategy is the single source of truth and everything downstream inherits it.</p>
+      <p><strong>Once your strategy is written, every other planning skill reads it automatically.</strong> The guide describes a set of installable agent skills for ideating, brainstorming, planning and prioritizing. All of them pull from <code>strategy.md</code> as their grounding context before they do anything. That means you are not re-explaining your product to the agent every time you want to brainstorm a feature or write a spec. The strategy is the single source of truth and everything downstream inherits it.</p>
 
-      <p><strong>Prioritization runs as a daily command, not a quarterly meeting.</strong> Instead of doing big prioritization exercises every few months, the workflow includes a /prioritize command that runs every day. Because the agent already knows your strategy and has access to your backlog, it can surface what matters right now without you needing to set up a scoring framework or run a meeting to align the team on it.</p>
+      <p><strong>Prioritization runs as a daily command, not a quarterly meeting.</strong> Instead of doing big prioritization exercises every few months, the workflow includes a <code>/prioritize</code> command that runs every day. Because the agent already knows your strategy and has access to your backlog, it can surface what matters right now without you needing to set up a scoring framework or run a meeting to align the team on it.</p>
 
       <p><strong>Review is built into the loop, not bolted on at the end.</strong> The guide includes a "product pulse" skill that checks your metrics after a feature has been live for a while. The output is a pulse report, and the planning skills are meant to read those reports when you kick off a new planning cycle. So the loop is genuinely closed: what you shipped and how it performed feeds directly into what you plan next, rather than sitting in an analytics tab that nobody checks.</p>
 
@@ -494,8 +699,8 @@
 
     <article class="entry" id="may-3-2026-qwen">
       <header>
-        <span class="date">May 3, 2026</span>
-        <h2>Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast</h2>
+        <span class="date day-may3">May 3, 2026</span>
+        <h2><a class="anchor" href="#may-3-2026-qwen" aria-label="Link to this entry">#</a>Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast</h2>
       </header>
 
       <p>On April 22, Alibaba's Qwen team released Qwen3.6-27B. I caught it last week and it is worth documenting because it is one of those releases that makes you stop and think about how fast open source is moving.</p>
@@ -575,8 +780,8 @@
 
     <article class="entry" id="may-3-2026-design">
       <header>
-        <span class="date">May 3, 2026</span>
-        <h2>DESIGN.md: Taking Control of How AI Builds Your UI</h2>
+        <span class="date day-may3">May 3, 2026</span>
+        <h2><a class="anchor" href="#may-3-2026-design" aria-label="Link to this entry">#</a>DESIGN.md: Taking Control of How AI Builds Your UI</h2>
       </header>
 
       <p>I came across a tweet from Mike Bespalov, the founder of Refero, that put something into words I had been feeling for a while.</p>
@@ -587,13 +792,13 @@
 
       <p>That is the problem. When you vibe code a UI and just let the AI decide, you get something generic. It is functional but it looks like every other AI-generated interface. The reason is not that the model is bad at code, it is that the model has no taste. It has never been trained to study what makes Stripe's UI feel trustworthy, or why Linear's spacing feels so clean. So it defaults to average.</p>
 
-      <p>The solution Mike built is a collection of 2,000 DESIGN.md files from the world's best products, structured for a model to read and understand before it writes a single line of UI code.</p>
+      <p>The solution Mike built is a collection of 2,000 <code>DESIGN.md</code> files from the world's best products, structured for a model to read and understand before it writes a single line of UI code.</p>
 
-      <p><strong>What a DESIGN.md file actually is.</strong> It is a single markdown file that describes your entire design system: colors, typography, spacing, components, dos and donts. The format is an open spec originally from Google Labs. When you drop a DESIGN.md into your project, Claude Code or Cursor reads it before generating any UI. Every component it creates follows the rules in that file. Instead of the agent inventing the design from scratch, it is working from a defined visual language.</p>
+      <p><strong>What a <code>DESIGN.md</code> file actually is.</strong> It is a single markdown file that describes your entire design system: colors, typography, spacing, components, dos and donts. The format is an open spec originally from Google Labs. When you drop a <code>DESIGN.md</code> into your project, Claude Code or Cursor reads it before generating any UI. Every component it creates follows the rules in that file. Instead of the agent inventing the design from scratch, it is working from a defined visual language.</p>
 
-      <p><strong>How Refero Styles works.</strong> The site is a catalog of DESIGN.md files extracted from real products like Stripe, Linear, Notion, Figma and Vercel. You browse the catalog, pick the design style closest to what you want, drop the file into your project, and the agent generates UI that matches that aesthetic. You are no longer at the mercy of whatever the model decides looks good.</p>
+      <p><strong>How Refero Styles works.</strong> The site is a catalog of <code>DESIGN.md</code> files extracted from real products like Stripe, Linear, Notion, Figma and Vercel. You browse the catalog, pick the design style closest to what you want, drop the file into your project, and the agent generates UI that matches that aesthetic. You are no longer at the mercy of whatever the model decides looks good.</p>
 
-      <p><strong>There is also an MCP.</strong> Refero ships an MCP so Claude Code can search the catalog directly in natural language. You describe the vibe you are going for and the agent finds the closest matching style and drops a generated DESIGN.md into your project before it starts building. That means the design language is locked in from the very first component.</p>
+      <p><strong>There is also an MCP.</strong> Refero ships an MCP so Claude Code can search the catalog directly in natural language. You describe the vibe you are going for and the agent finds the closest matching style and drops a generated <code>DESIGN.md</code> into your project before it starts building. That means the design language is locked in from the very first component.</p>
 
       <p>The broader point here is about taste. As vibe coding gets easier, the people who put thought into design and take control of it will stand out. If everyone just lets the AI decide, everything ends up looking the same.</p>
 
@@ -604,21 +809,21 @@
 
       <h3>Companies &amp; Tools</h3>
       <ul>
-        <li><strong>Refero Styles</strong>: Catalog of 2,000 DESIGN.md files from top products, ready to drop into any AI coding project · <a href="https://styles.refero.design">styles.refero.design</a></li>
-        <li><strong>Refero MCP</strong>: MCP server that lets Claude Code search Refero's design catalog and generate a DESIGN.md for your project · <a href="https://refero.design/mcp">refero.design/mcp</a></li>
+        <li><strong>Refero Styles</strong>: Catalog of 2,000 <code>DESIGN.md</code> files from top products, ready to drop into any AI coding project · <a href="https://styles.refero.design">styles.refero.design</a></li>
+        <li><strong>Refero MCP</strong>: MCP server that lets Claude Code search Refero's design catalog and generate a <code>DESIGN.md</code> for your project · <a href="https://refero.design/mcp">refero.design/mcp</a></li>
       </ul>
 
       <h3>Resources</h3>
       <ul>
-        <li><a href="https://styles.refero.design">Refero Styles</a> - Browse and download DESIGN.md files from the world's best products</li>
+        <li><a href="https://styles.refero.design">Refero Styles</a> - Browse and download <code>DESIGN.md</code> files from the world's best products</li>
         <li><a href="https://x.com/bbssppllvv/status/2049924037111841027">Original tweet by Mike Bespalov</a> - The post that introduced this resource</li>
       </ul>
     </article>
 
     <article class="entry" id="may-3-2026-scaling">
       <header>
-        <span class="date">May 3, 2026</span>
-        <h2>The Scaling Era: An Oral History of the Years That Shaped AI</h2>
+        <span class="date day-may3">May 3, 2026</span>
+        <h2><a class="anchor" href="#may-3-2026-scaling" aria-label="Link to this entry">#</a>The Scaling Era: An Oral History of the Years That Shaped AI</h2>
       </header>
 
       <p>I stumbled across Leopold Aschenbrenner's X account today. If you do not know who he is, his story is worth looking into. He graduated as valedictorian from Columbia at 19, went to work at OpenAI's Superalignment team, and was fired in April 2024 in circumstances that are still disputed. He says it was for raising security concerns about foreign espionage. OpenAI says it was for leaking information. After getting fired he wrote "Situational Awareness", a 165-page manifesto predicting AGI by 2027 that went viral and even got praised by Ivanka Trump. He then used that attention to launch a hedge fund called Situational Awareness LP. In under a year he grew it from $225 million to $5.5 billion. He is 24 years old.</p>
@@ -656,8 +861,8 @@
 
     <article class="entry" id="may-3-2026-anthropic">
       <header>
-        <span class="date">May 3, 2026</span>
-        <h2>Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For</h2>
+        <span class="date day-may3">May 3, 2026</span>
+        <h2><a class="anchor" href="#may-3-2026-anthropic" aria-label="Link to this entry">#</a>Anthropic Analyzed 1M Claude Conversations. Here Is What People Actually Use It For</h2>
       </header>
 
       <p>Two days ago Anthropic published a research paper on how people use Claude for personal guidance. They sampled 1 million Claude.ai conversations from March and April 2026 and used a classifier to find conversations where people were asking not just for information, but for a perspective on what they personally should do: should I take this job, should I move, how do I handle this conflict.</p>
@@ -667,17 +872,21 @@
       <p><strong>Where people go for help.</strong> Over 75% of guidance conversations fell into four domains. The breakdown from the full chart (10 clusters, 37,657 conversations):</p>
 
       <div class="chart">
-        <p class="chart-title">Where people ask Claude for personal guidance</p>
+        <p class="chart-title">Where people ask Claude for personal guidance · top 4 = 76.3%</p>
         <div class="chart-row"><span class="label">Health / Wellness</span><div class="track"><div class="fill" style="width: 90.7%"></div></div><span class="value">27.2%</span></div>
         <div class="chart-row"><span class="label">Professional / Career</span><div class="track"><div class="fill" style="width: 86.3%"></div></div><span class="value">25.9%</span></div>
         <div class="chart-row"><span class="label">Relationships</span><div class="track"><div class="fill" style="width: 41.0%"></div></div><span class="value">12.3%</span></div>
         <div class="chart-row"><span class="label">Financial</span><div class="track"><div class="fill" style="width: 36.3%"></div></div><span class="value">10.9%</span></div>
-        <div class="chart-row"><span class="label">Personal Development</span><div class="track"><div class="fill" style="width: 21.0%"></div></div><span class="value">6.3%</span></div>
-        <div class="chart-row"><span class="label">Spirituality</span><div class="track"><div class="fill" style="width: 14.7%"></div></div><span class="value">4.4%</span></div>
-        <div class="chart-row"><span class="label">Legal</span><div class="track"><div class="fill" style="width: 14.0%"></div></div><span class="value">4.2%</span></div>
-        <div class="chart-row"><span class="label">Consumer</span><div class="track"><div class="fill" style="width: 13.0%"></div></div><span class="value">3.9%</span></div>
-        <div class="chart-row"><span class="label">Parenting</span><div class="track"><div class="fill" style="width: 10.3%"></div></div><span class="value">3.1%</span></div>
+        <div class="chart-row muted-fill"><span class="label">Personal Development</span><div class="track"><div class="fill" style="width: 21.0%"></div></div><span class="value">6.3%</span></div>
+        <div class="chart-row muted-fill"><span class="label">Spirituality</span><div class="track"><div class="fill" style="width: 14.7%"></div></div><span class="value">4.4%</span></div>
+        <div class="chart-row muted-fill"><span class="label">Legal</span><div class="track"><div class="fill" style="width: 14.0%"></div></div><span class="value">4.2%</span></div>
+        <div class="chart-row muted-fill"><span class="label">Consumer</span><div class="track"><div class="fill" style="width: 13.0%"></div></div><span class="value">3.9%</span></div>
+        <div class="chart-row muted-fill"><span class="label">Parenting</span><div class="track"><div class="fill" style="width: 10.3%"></div></div><span class="value">3.1%</span></div>
         <div class="chart-row muted-fill"><span class="label">Other</span><div class="track"><div class="fill" style="width: 6.3%"></div></div><span class="value">1.9%</span></div>
+        <div class="chart-legend">
+          <span><span class="swatch" style="background: var(--accent)"></span> Top 4 domains</span>
+          <span><span class="swatch" style="background: #8b949e"></span> Long tail</span>
+        </div>
       </div>
 
       <table>
@@ -740,8 +949,8 @@
 
     <article class="entry" id="may-4-2026-boris">
       <header>
-        <span class="date">May 4, 2026</span>
-        <h2>Boris Cherny's One Book Recommendation: Functional Programming in Scala</h2>
+        <span class="date day-may4">May 4, 2026</span>
+        <h2><a class="anchor" href="#may-4-2026-boris" aria-label="Link to this entry">#</a>Boris Cherny's One Book Recommendation: Functional Programming in Scala</h2>
       </header>
 
       <p>I came across a post from Ryan Peterman quoting Boris Cherny, the creator of Claude Code. Boris was asked for the one technical book that had the greatest impact on him as an engineer. His answer was Functional Programming in Scala.</p>
@@ -775,8 +984,8 @@
 
     <article class="entry" id="may-4-2026-codewiki">
       <header>
-        <span class="date">May 4, 2026</span>
-        <h2>Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually</h2>
+        <span class="date day-may4">May 4, 2026</span>
+        <h2><a class="anchor" href="#may-4-2026-codewiki" aria-label="Link to this entry">#</a>Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually</h2>
       </header>
 
       <p>Google just released something I think is genuinely incredible. It is called Code Wiki and it is at codewiki.google. You drop any public GitHub repo into it and it generates a full interactive documentation site for that codebase, automatically. Architecture diagrams, visual walkthroughs, a chat agent that can answer questions about the code. All of it.</p>
@@ -807,8 +1016,8 @@
 
     <article class="entry" id="may-8-2026-html">
       <header>
-        <span class="date">May 8, 2026</span>
-        <h2>HTML Might Be a Better Format Than Markdown for Storing Knowledge</h2>
+        <span class="date day-may8">May 8, 2026</span>
+        <h2><a class="anchor" href="#may-8-2026-html" aria-label="Link to this entry">#</a>HTML Might Be a Better Format Than Markdown for Storing Knowledge</h2>
       </header>
 
       <p>I came across a post from Thariq Shihipar, who works on Claude Code at Anthropic, arguing that HTML is actually a superior format to Markdown for storing and presenting information. It made me stop and think seriously about this repo.</p>
@@ -884,5 +1093,47 @@ comparisons.
     </article>
   </main>
 </div>
+
+<script>
+  (function () {
+    var progress = document.getElementById('progress');
+    function updateProgress() {
+      var doc = document.documentElement;
+      var scrollTop = window.pageYOffset || doc.scrollTop;
+      var height = doc.scrollHeight - doc.clientHeight;
+      var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      progress.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+
+    var sidebarLinks = document.querySelectorAll('aside.sidebar a');
+    var linkMap = new Map();
+    sidebarLinks.forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && href.charAt(0) === '#') linkMap.set(href.slice(1), a);
+    });
+
+    var visible = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) visible.add(e.target.id);
+        else visible.delete(e.target.id);
+      });
+      sidebarLinks.forEach(function (a) { a.classList.remove('active'); });
+      var ordered = Array.from(document.querySelectorAll('article.entry')).map(function (el) { return el.id; });
+      for (var i = 0; i < ordered.length; i++) {
+        if (visible.has(ordered[i])) {
+          var link = linkMap.get(ordered[i]);
+          if (link) link.classList.add('active');
+          break;
+        }
+      }
+    }, { rootMargin: '-80px 0px -65% 0px', threshold: 0 });
+
+    document.querySelectorAll('article.entry').forEach(function (el) { io.observe(el); });
+  })();
+</script>
 </body>
 </html>
