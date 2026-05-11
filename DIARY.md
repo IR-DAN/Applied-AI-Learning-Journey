@@ -17,6 +17,7 @@
 - [May 4, 2026 - Boris Cherny's One Book Recommendation: Functional Programming in Scala](#may-4-2026--boris-chernys-one-book-recommendation-functional-programming-in-scala)
 - [May 4, 2026 - Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually](#may-4-2026--google-codewiki-drop-any-github-repo-and-walk-through-it-visually)
 - [May 8, 2026 - HTML Might Be a Better Format Than Markdown for Storing Knowledge](#may-8-2026--html-might-be-a-better-format-than-markdown-for-storing-knowledge)
+- [May 11, 2026 - OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers](#may-11-2026--openai-daybreak-ai-that-helps-defenders-not-just-attackers)
 
 ---
 
@@ -309,3 +310,33 @@ I am genuinely considering moving this repo to a hosted HTML website. The conten
 
 - [The Unreasonable Effectiveness of HTML](https://thariqs.github.io/html-effectiveness/) - Thariq Shihipar's post with examples of what HTML can express that Markdown cannot
 - [Thariq's tweet](https://x.com/trq212/status/2052809885763747935)
+
+---
+
+## May 11, 2026 - OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers
+
+OpenAI announced Daybreak, a cybersecurity initiative built on the premise that defense should be designed into software from the start, not bolted on after a breach. They are pairing it with GPT-5.5-Cyber, a variant of GPT-5.5 with fewer guardrails, available to vetted cybersecurity teams through a new Trusted Access for Cyber program.
+
+I could not be more excited about this. So much of the AI risk conversation has focused on what these models could do for attackers. Daybreak is the first major step I have seen toward saying the same capabilities have to be put in the hands of defenders, and that defenders need first-class tools too. We have to keep up with adversaries, which means our LLMs have to evolve in a way that helps the people protecting systems, not just the people probing them.
+
+**What Daybreak actually is.** Daybreak is OpenAI's vision for changing how software is built and defended: see risk earlier, act sooner, make systems resilient by design. The pitch is that AI can let defenders reason across whole codebases, find subtle vulnerabilities, validate fixes, and analyse unfamiliar systems at a speed that closes the gap with offensive work. Use cases listed include secure code review, threat modeling, patch validation, dependency risk analysis, detection, and remediation guidance, all folded into the everyday development loop.
+
+**GPT-5.5-Cyber is a less-restricted model for vetted teams.** This is the part most worth flagging. OpenAI is rolling out a version of GPT-5.5 with fewer guardrails specifically to approved cybersecurity teams in the highest tier of the Trusted Access for Cyber program. With it, defenders can hunt for bugs, study malware, and reverse engineer attacks without the model refusing to engage with the kind of content that security work requires. Standard public models block a lot of that on principle, which makes them useless for the people who actually need them.
+
+**Anthropic Mythos came first by about a month.** This follows Anthropic's Mythos preview, which I noted in the May 3 entry on the 1M Claude conversations study. Two of the three frontier labs now have dedicated cybersecurity model tracks. That feels like a meaningful turning point for the field.
+
+**The accountability layer is the catch.** Capabilities like this are dual-use. OpenAI is gating access through vetting, verification and proportional safeguards, and says it is working with industry and government partners as it deploys progressively more cyber-capable models. How well that gating holds up under real-world pressure is the open question.
+
+If you work in security and want to keep up with where the tooling is going, this is the announcement to read.
+
+### Companies & Tools
+
+- **OpenAI Daybreak**: OpenAI's cybersecurity initiative around defense-by-design and AI-assisted vulnerability work · [openai.com/daybreak](https://openai.com/daybreak/)
+- **GPT-5.5-Cyber**: A less-restricted variant of GPT-5.5 available to vetted security teams via OpenAI's Trusted Access for Cyber program
+- **Anthropic Mythos**: Anthropic's dedicated cybersecurity model line, which debuted about a month earlier
+
+### Resources
+
+- [Daybreak: OpenAI for cybersecurity](https://openai.com/daybreak/) - The official Daybreak page
+- [Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber](https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/) - The OpenAI post detailing the tiered access program
+- [CNBC: OpenAI rolls out new GPT-5.5-Cyber to vetted teams](https://www.cnbc.com/2026/05/07/openai-rolls-out-new-gpt-5point5-cyber-to-vetted-cybersecurity-teams.html) - News coverage of the GPT-5.5-Cyber release

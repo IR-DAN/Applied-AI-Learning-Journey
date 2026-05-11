@@ -33,6 +33,8 @@
     --day-may4-soft: #dafbe1;
     --day-may8: #d97706;
     --day-may8-soft: #fff8c5;
+    --day-may11: #cf222e;
+    --day-may11-soft: #ffebe9;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -60,6 +62,8 @@
       --day-may4-soft: rgba(63, 185, 80, 0.14);
       --day-may8: #f59e0b;
       --day-may8-soft: rgba(245, 158, 11, 0.14);
+      --day-may11: #ff7b72;
+      --day-may11-soft: rgba(255, 123, 114, 0.14);
     }
   }
 
@@ -134,6 +138,7 @@
   aside.sidebar .day-tag.day-may3 { color: var(--day-may3); background: var(--day-may3-soft); }
   aside.sidebar .day-tag.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
   aside.sidebar .day-tag.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
+  aside.sidebar .day-tag.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -250,6 +255,7 @@
   article.entry .date.day-may3 { color: var(--day-may3); background: var(--day-may3-soft); }
   article.entry .date.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
   article.entry .date.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
+  article.entry .date.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -549,6 +555,12 @@
         <span class="day-tag day-may8">May 8, 2026</span>
         <ul>
           <li><a href="#may-8-2026-html">HTML Might Be a Better Format Than Markdown for Storing Knowledge</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may11">May 11, 2026</span>
+        <ul>
+          <li><a href="#may-11-2026-daybreak">OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers</a></li>
         </ul>
       </div>
     </nav>
@@ -1089,6 +1101,41 @@ comparisons.
       <ul>
         <li><a href="https://thariqs.github.io/html-effectiveness/">The Unreasonable Effectiveness of HTML</a> - Thariq Shihipar's post with examples of what HTML can express that Markdown cannot</li>
         <li><a href="https://x.com/trq212/status/2052809885763747935">Thariq's tweet</a></li>
+      </ul>
+    </article>
+
+    <article class="entry" id="may-11-2026-daybreak">
+      <header>
+        <span class="date day-may11">May 11, 2026</span>
+        <h2><a class="anchor" href="#may-11-2026-daybreak" aria-label="Link to this entry">#</a>OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers</h2>
+      </header>
+
+      <p>OpenAI announced Daybreak, a cybersecurity initiative built on the premise that defense should be designed into software from the start, not bolted on after a breach. They are pairing it with GPT-5.5-Cyber, a variant of GPT-5.5 with fewer guardrails, available to vetted cybersecurity teams through a new Trusted Access for Cyber program.</p>
+
+      <p>I could not be more excited about this. So much of the AI risk conversation has focused on what these models could do for attackers. Daybreak is the first major step I have seen toward saying the same capabilities have to be put in the hands of defenders, and that defenders need first-class tools too. We have to keep up with adversaries, which means our LLMs have to evolve in a way that helps the people protecting systems, not just the people probing them.</p>
+
+      <p><strong>What Daybreak actually is.</strong> Daybreak is OpenAI's vision for changing how software is built and defended: see risk earlier, act sooner, make systems resilient by design. The pitch is that AI can let defenders reason across whole codebases, find subtle vulnerabilities, validate fixes, and analyse unfamiliar systems at a speed that closes the gap with offensive work. Use cases listed include secure code review, threat modeling, patch validation, dependency risk analysis, detection, and remediation guidance, all folded into the everyday development loop.</p>
+
+      <p><strong>GPT-5.5-Cyber is a less-restricted model for vetted teams.</strong> This is the part most worth flagging. OpenAI is rolling out a version of GPT-5.5 with fewer guardrails specifically to approved cybersecurity teams in the highest tier of the Trusted Access for Cyber program. With it, defenders can hunt for bugs, study malware, and reverse engineer attacks without the model refusing to engage with the kind of content that security work requires. Standard public models block a lot of that on principle, which makes them useless for the people who actually need them.</p>
+
+      <p><strong>Anthropic Mythos came first by about a month.</strong> This follows Anthropic's Mythos preview, which I noted in the <a href="#may-3-2026-anthropic">May 3 entry</a> on the 1M Claude conversations study. Two of the three frontier labs now have dedicated cybersecurity model tracks. That feels like a meaningful turning point for the field.</p>
+
+      <p><strong>The accountability layer is the catch.</strong> Capabilities like this are dual-use. OpenAI is gating access through vetting, verification and proportional safeguards, and says it is working with industry and government partners as it deploys progressively more cyber-capable models. How well that gating holds up under real-world pressure is the open question.</p>
+
+      <p>If you work in security and want to keep up with where the tooling is going, this is the announcement to read.</p>
+
+      <h3>Companies &amp; Tools</h3>
+      <ul>
+        <li><strong>OpenAI Daybreak</strong>: OpenAI's cybersecurity initiative around defense-by-design and AI-assisted vulnerability work · <a href="https://openai.com/daybreak/">openai.com/daybreak</a></li>
+        <li><strong>GPT-5.5-Cyber</strong>: A less-restricted variant of GPT-5.5 available to vetted security teams via OpenAI's Trusted Access for Cyber program</li>
+        <li><strong>Anthropic Mythos</strong>: Anthropic's dedicated cybersecurity model line, which debuted about a month earlier</li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://openai.com/daybreak/">Daybreak: OpenAI for cybersecurity</a> - The official Daybreak page</li>
+        <li><a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/">Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber</a> - The OpenAI post detailing the tiered access program</li>
+        <li><a href="https://www.cnbc.com/2026/05/07/openai-rolls-out-new-gpt-5point5-cyber-to-vetted-cybersecurity-teams.html">CNBC: OpenAI rolls out new GPT-5.5-Cyber to vetted teams</a> - News coverage of the GPT-5.5-Cyber release</li>
       </ul>
     </article>
   </main>
