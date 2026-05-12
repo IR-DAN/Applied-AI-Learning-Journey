@@ -35,6 +35,8 @@
     --day-may8-soft: #fff8c5;
     --day-may11: #cf222e;
     --day-may11-soft: #ffebe9;
+    --day-may12: #0d9488;
+    --day-may12-soft: #ccfbf1;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -64,6 +66,8 @@
       --day-may8-soft: rgba(245, 158, 11, 0.14);
       --day-may11: #ff7b72;
       --day-may11-soft: rgba(255, 123, 114, 0.14);
+      --day-may12: #5eead4;
+      --day-may12-soft: rgba(94, 234, 212, 0.14);
     }
   }
 
@@ -139,6 +143,7 @@
   aside.sidebar .day-tag.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
   aside.sidebar .day-tag.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
   aside.sidebar .day-tag.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
+  aside.sidebar .day-tag.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -256,6 +261,7 @@
   article.entry .date.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
   article.entry .date.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
   article.entry .date.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
+  article.entry .date.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -561,6 +567,12 @@
         <span class="day-tag day-may11">May 11, 2026</span>
         <ul>
           <li><a href="#may-11-2026-daybreak">OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may12">May 12, 2026</span>
+        <ul>
+          <li><a href="#may-12-2026-karpathy">Karpathy Endorses the HTML Output Trick</a></li>
         </ul>
       </div>
     </nav>
@@ -1136,6 +1148,41 @@ comparisons.
         <li><a href="https://openai.com/daybreak/">Daybreak: OpenAI for cybersecurity</a> - The official Daybreak page</li>
         <li><a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/">Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber</a> - The OpenAI post detailing the tiered access program</li>
         <li><a href="https://www.cnbc.com/2026/05/07/openai-rolls-out-new-gpt-5point5-cyber-to-vetted-cybersecurity-teams.html">CNBC: OpenAI rolls out new GPT-5.5-Cyber to vetted teams</a> - News coverage of the GPT-5.5-Cyber release</li>
+      </ul>
+    </article>
+
+    <article class="entry" id="may-12-2026-karpathy">
+      <header>
+        <span class="date day-may12">May 12, 2026</span>
+        <h2><a class="anchor" href="#may-12-2026-karpathy" aria-label="Link to this entry">#</a>Karpathy Endorses the HTML Output Trick</h2>
+      </header>
+
+      <p>Four days after my <a href="#may-8-2026-html">May 8 entry</a> on HTML being a better format than Markdown for storing knowledge, Andrej Karpathy posted the same idea on X:</p>
+
+      <blockquote>
+        <p>"This works really well btw, at the end of your query ask your LLM to 'structure your response as HTML', then view the generated file in your browser. I've also had some success asking the LLM to present its output as slideshows, etc."</p>
+      </blockquote>
+
+      <p>This is direct, independent confirmation of Thariq Shihipar's argument that I documented on May 8. When the person who coined "vibe coding", who was a founding member of OpenAI and Director of AI at Tesla, is saying the same thing as a Claude Code engineer at Anthropic, the idea has crossed from "interesting take" to "established practice".</p>
+
+      <p><strong>The technique is dead simple.</strong> Add "structure your response as HTML" to the end of your prompt. Save the response as a <code>.html</code> file. Open it in your browser. Done. No tooling, no plugin, no configuration. The output instantly gains layout, color, navigability and the ability to embed diagrams that Markdown simply cannot represent.</p>
+
+      <p><strong>Slideshows are the next step.</strong> Karpathy also mentions asking the LLM to present its output as slideshows. This is the same logic taken one step further: if HTML is better than Markdown for some tasks, a slide deck is better than a wall of HTML for others. Tools like Marp let the model write decks in plain Markdown that compile to HTML slides, which means you can go from question to presentation in seconds.</p>
+
+      <p><strong>Where this is going.</strong> Karpathy starts to make a broader point in the tweet about output modalities (his last visible line trails off about audio), suggesting that the right output format for an LLM response is whatever best matches the question. Text and chat are a default, not an optimum. As models get better at generating rich, structured outputs in seconds, the conversation shifts from "what does the model say" to "what format does this answer want to be in".</p>
+
+      <p>I am going to start applying the HTML trick by default in my own Claude Code prompts where the output is meant to be read carefully rather than skimmed. The cost of asking for HTML is one line in the prompt. The upside is everything Thariq laid out in the May 8 entry: richness, density, share-ability, and the simple fact that I will actually read it.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Andrej Karpathy</strong>, AI researcher, founder of Eureka Labs, ex-Director of AI at Tesla, founding member of OpenAI · <a href="https://x.com/karpathy">X</a> · <a href="https://karpathy.ai/">karpathy.ai</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/karpathy/status/2053872850101285137">Karpathy's tweet</a> - The HTML output endorsement</li>
+        <li><a href="https://thariqs.github.io/html-effectiveness/">The Unreasonable Effectiveness of HTML</a> - Thariq Shihipar's original post, covered in the May 8 entry</li>
+        <li><a href="https://marp.app/">Marp</a> - Markdown-to-deck tool useful for the slideshow workflow Karpathy mentions</li>
       </ul>
     </article>
   </main>
