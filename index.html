@@ -35,6 +35,10 @@
     --day-may8-soft: #fff8c5;
     --day-may11: #cf222e;
     --day-may11-soft: #ffebe9;
+    --day-may12: #0d9488;
+    --day-may12-soft: #ccfbf1;
+    --day-may15: #4f46e5;
+    --day-may15-soft: #eef2ff;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -64,6 +68,10 @@
       --day-may8-soft: rgba(245, 158, 11, 0.14);
       --day-may11: #ff7b72;
       --day-may11-soft: rgba(255, 123, 114, 0.14);
+      --day-may12: #5eead4;
+      --day-may12-soft: rgba(94, 234, 212, 0.14);
+      --day-may15: #a5b4fc;
+      --day-may15-soft: rgba(165, 180, 252, 0.14);
     }
   }
 
@@ -139,6 +147,8 @@
   aside.sidebar .day-tag.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
   aside.sidebar .day-tag.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
   aside.sidebar .day-tag.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
+  aside.sidebar .day-tag.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
+  aside.sidebar .day-tag.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -256,6 +266,8 @@
   article.entry .date.day-may4 { color: var(--day-may4); background: var(--day-may4-soft); }
   article.entry .date.day-may8 { color: var(--day-may8); background: var(--day-may8-soft); }
   article.entry .date.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
+  article.entry .date.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
+  article.entry .date.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -494,6 +506,56 @@
     fill: var(--surface);
   }
 
+  /* Roadmap card grid */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 18px 0 28px 0;
+  }
+  .stage {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--code-bg);
+    align-items: start;
+  }
+  .stage .num {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--day-may15-soft);
+    color: var(--day-may15);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-sans);
+  }
+  .stage.final .num { background: var(--day-may15); color: #fff; }
+  .stage .title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 14.5px;
+    margin: 2px 0 4px 0;
+    color: var(--text);
+  }
+  .stage .topics {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.45;
+    margin: 0;
+  }
+  @media (max-width: 700px) {
+    .roadmap { grid-template-columns: 1fr; }
+  }
+
   .pill-row .pill {
     background: var(--accent-soft);
     color: var(--accent);
@@ -561,6 +623,18 @@
         <span class="day-tag day-may11">May 11, 2026</span>
         <ul>
           <li><a href="#may-11-2026-daybreak">OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may12">May 12, 2026</span>
+        <ul>
+          <li><a href="#may-12-2026-karpathy">Karpathy Endorses the HTML Output Trick</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may15">May 15, 2026</span>
+        <ul>
+          <li><a href="#may-15-2026-roadmap">A 6-Month Roadmap to Become an AI Infrastructure Engineer</a></li>
         </ul>
       </div>
     </nav>
@@ -1136,6 +1210,159 @@ comparisons.
         <li><a href="https://openai.com/daybreak/">Daybreak: OpenAI for cybersecurity</a> - The official Daybreak page</li>
         <li><a href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/">Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber</a> - The OpenAI post detailing the tiered access program</li>
         <li><a href="https://www.cnbc.com/2026/05/07/openai-rolls-out-new-gpt-5point5-cyber-to-vetted-cybersecurity-teams.html">CNBC: OpenAI rolls out new GPT-5.5-Cyber to vetted teams</a> - News coverage of the GPT-5.5-Cyber release</li>
+      </ul>
+    </article>
+
+    <article class="entry" id="may-12-2026-karpathy">
+      <header>
+        <span class="date day-may12">May 12, 2026</span>
+        <h2><a class="anchor" href="#may-12-2026-karpathy" aria-label="Link to this entry">#</a>Karpathy Endorses the HTML Output Trick</h2>
+      </header>
+
+      <p>Four days after my <a href="#may-8-2026-html">May 8 entry</a> on HTML being a better format than Markdown for storing knowledge, Andrej Karpathy posted the same idea on X:</p>
+
+      <blockquote>
+        <p>"This works really well btw, at the end of your query ask your LLM to 'structure your response as HTML', then view the generated file in your browser. I've also had some success asking the LLM to present its output as slideshows, etc."</p>
+      </blockquote>
+
+      <p>This is direct, independent confirmation of Thariq Shihipar's argument that I documented on May 8. When the person who coined "vibe coding", who was a founding member of OpenAI and Director of AI at Tesla, is saying the same thing as a Claude Code engineer at Anthropic, the idea has crossed from "interesting take" to "established practice".</p>
+
+      <p><strong>The technique is dead simple.</strong> Add "structure your response as HTML" to the end of your prompt. Save the response as a <code>.html</code> file. Open it in your browser. Done. No tooling, no plugin, no configuration. The output instantly gains layout, color, navigability and the ability to embed diagrams that Markdown simply cannot represent.</p>
+
+      <p><strong>Slideshows are the next step.</strong> Karpathy also mentions asking the LLM to present its output as slideshows. This is the same logic taken one step further: if HTML is better than Markdown for some tasks, a slide deck is better than a wall of HTML for others. Tools like Marp let the model write decks in plain Markdown that compile to HTML slides, which means you can go from question to presentation in seconds.</p>
+
+      <p><strong>Where this is going.</strong> Karpathy starts to make a broader point in the tweet about output modalities (his last visible line trails off about audio), suggesting that the right output format for an LLM response is whatever best matches the question. Text and chat are a default, not an optimum. As models get better at generating rich, structured outputs in seconds, the conversation shifts from "what does the model say" to "what format does this answer want to be in".</p>
+
+      <p>I am going to start applying the HTML trick by default in my own Claude Code prompts where the output is meant to be read carefully rather than skimmed. The cost of asking for HTML is one line in the prompt. The upside is everything Thariq laid out in the May 8 entry: richness, density, share-ability, and the simple fact that I will actually read it.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Andrej Karpathy</strong>, AI researcher, founder of Eureka Labs, ex-Director of AI at Tesla, founding member of OpenAI · <a href="https://x.com/karpathy">X</a> · <a href="https://karpathy.ai/">karpathy.ai</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/karpathy/status/2053872850101285137">Karpathy's tweet</a> - The HTML output endorsement</li>
+        <li><a href="https://thariqs.github.io/html-effectiveness/">The Unreasonable Effectiveness of HTML</a> - Thariq Shihipar's original post, covered in the May 8 entry</li>
+        <li><a href="https://marp.app/">Marp</a> - Markdown-to-deck tool useful for the slideshow workflow Karpathy mentions</li>
+      </ul>
+    </article>
+
+    <article class="entry" id="may-15-2026-roadmap">
+      <header>
+        <span class="date day-may15">May 15, 2026</span>
+        <h2><a class="anchor" href="#may-15-2026-roadmap" aria-label="Link to this entry">#</a>A 6-Month Roadmap to Become an AI Infrastructure Engineer</h2>
+      </header>
+
+      <p>I came across a post from Jahir Sheikh that lays out a 12-stage path to becoming an AI Infrastructure Engineer in six months. I am documenting it because applied AI engineering, the skill of actually shipping working AI systems, has become more valuable for most people in the industry than knowing how to train models from scratch.</p>
+
+      <p>Most people working in AI right now will not be the ones training frontier models. They will be the ones taking those models, wrapping them in production-grade infrastructure, and making them reliable, fast and cheap enough for real users. That work has its own deep technical stack. Jahir's roadmap is the cleanest, shortest version of that stack I have seen.</p>
+
+      <p><strong>Why this matters more than a research-heavy curriculum.</strong> The bottleneck for most AI products today is not "can we train a better model". It is "can we serve this model at scale, with low latency, without burning all our money, while keeping it observable and reliable". Every one of those words is an infrastructure problem. The people who solve those problems are the ones who get hired into AI infra roles and the ones founders fight over.</p>
+
+      <p><strong>The 12 stages.</strong></p>
+
+      <div class="roadmap" role="list" aria-label="12-stage roadmap to AI Infrastructure Engineer">
+        <div class="stage" role="listitem">
+          <div class="num">01</div>
+          <div>
+            <p class="title">Linux + Networking</p>
+            <p class="topics">Processes, memory, GPUs, sockets, HTTP, TCP/IP basics.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">02</div>
+          <div>
+            <p class="title">Python + Backend</p>
+            <p class="topics">Async Python, FastAPI, queues, concurrency fundamentals.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">03</div>
+          <div>
+            <p class="title">GPU Fundamentals</p>
+            <p class="topics">CUDA basics, VRAM, batching, quantization, throughput.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">04</div>
+          <div>
+            <p class="title">LLM Inference</p>
+            <p class="topics">vLLM, TensorRT-LLM, speculative decoding, KV caching.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">05</div>
+          <div>
+            <p class="title">Distributed Systems</p>
+            <p class="topics">Load balancing, queues, retries, autoscaling, distributed workers.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">06</div>
+          <div>
+            <p class="title">AI Serving</p>
+            <p class="topics">Model APIs, streaming responses, rate limiting, observability.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">07</div>
+          <div>
+            <p class="title">Data Pipelines</p>
+            <p class="topics">Kafka, Airflow, ETL pipelines, vector indexing.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">08</div>
+          <div>
+            <p class="title">Kubernetes + Cloud</p>
+            <p class="topics">Docker, Kubernetes, AWS/GCP basics, infra automation.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">09</div>
+          <div>
+            <p class="title">Monitoring + Reliability</p>
+            <p class="topics">Prometheus, Grafana, tracing, AI cost monitoring.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">10</div>
+          <div>
+            <p class="title">Real AI Systems</p>
+            <p class="topics">Deploy scalable chat apps, RAG pipelines, inference clusters.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">11</div>
+          <div>
+            <p class="title">Open Source</p>
+            <p class="topics">Contribute to inference tooling or AI infra projects.</p>
+          </div>
+        </div>
+        <div class="stage final" role="listitem">
+          <div class="num">12</div>
+          <div>
+            <p class="title">Apply</p>
+            <p class="topics">AI Infra Engineer, Platform Engineer, ML Systems Engineer.</p>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>What is smart about the ordering.</strong> The first six stages are foundation: Linux, Python, GPUs, inference, distributed systems, serving. Without those, every higher-level system you build is a house on sand. Stages 7 to 9 layer the production realities on top, data, orchestration, observability. Only at stage 10 do you build complete systems, and only at 11 do you contribute upstream. The discipline of doing it in this order is what most self-taught learners get wrong. They jump straight to deploying chat apps or fiddling with RAG without understanding the substrate they are running on, so when something breaks at scale they have no model in their head to debug it.</p>
+
+      <p><strong>My take on the timeline.</strong> Six months is realistic only if you can spend most of your week on this. At ten hours a week the same path is probably closer to eighteen months. The compounding part comes from stage 11. When you start contributing to actual inference tooling, you stop being a learner and become a peer to the people who build the stuff.</p>
+
+      <p>I am sharing this because it is exactly the kind of resource I would have wanted when I started. If the surface area of modern AI engineering feels intimidating, treat this as your map.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Jahir Sheikh</strong>, AI engineer · <a href="https://x.com/jahirsheikh8">X</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/jahirsheikh8/status/2054817239585694173">Jahir's tweet: 6 months to AI Infrastructure Engineer</a> - The original 12-stage roadmap</li>
       </ul>
     </article>
   </main>

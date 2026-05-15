@@ -18,6 +18,8 @@
 - [May 4, 2026 - Google CodeWiki: Drop Any GitHub Repo and Walk Through It Visually](#may-4-2026--google-codewiki-drop-any-github-repo-and-walk-through-it-visually)
 - [May 8, 2026 - HTML Might Be a Better Format Than Markdown for Storing Knowledge](#may-8-2026--html-might-be-a-better-format-than-markdown-for-storing-knowledge)
 - [May 11, 2026 - OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers](#may-11-2026--openai-daybreak-ai-that-helps-defenders-not-just-attackers)
+- [May 12, 2026 - Karpathy Endorses the HTML Output Trick](#may-12-2026--karpathy-endorses-the-html-output-trick)
+- [May 15, 2026 - A 6-Month Roadmap to Become an AI Infrastructure Engineer](#may-15-2026--a-6-month-roadmap-to-become-an-ai-infrastructure-engineer)
 
 ---
 
@@ -340,3 +342,70 @@ If you work in security and want to keep up with where the tooling is going, thi
 - [Daybreak: OpenAI for cybersecurity](https://openai.com/daybreak/) - The official Daybreak page
 - [Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber](https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber/) - The OpenAI post detailing the tiered access program
 - [CNBC: OpenAI rolls out new GPT-5.5-Cyber to vetted teams](https://www.cnbc.com/2026/05/07/openai-rolls-out-new-gpt-5point5-cyber-to-vetted-cybersecurity-teams.html) - News coverage of the GPT-5.5-Cyber release
+
+---
+
+## May 12, 2026 - Karpathy Endorses the HTML Output Trick
+
+Four days after my May 8 entry on HTML being a better format than Markdown for storing knowledge, Andrej Karpathy posted the same idea on X:
+
+> "This works really well btw, at the end of your query ask your LLM to 'structure your response as HTML', then view the generated file in your browser. I've also had some success asking the LLM to present its output as slideshows, etc."
+
+This is direct, independent confirmation of Thariq Shihipar's argument that I documented on May 8. When the person who coined "vibe coding", who was a founding member of OpenAI and Director of AI at Tesla, is saying the same thing as a Claude Code engineer at Anthropic, the idea has crossed from "interesting take" to "established practice".
+
+**The technique is dead simple.** Add "structure your response as HTML" to the end of your prompt. Save the response as a .html file. Open it in your browser. Done. No tooling, no plugin, no configuration. The output instantly gains layout, color, navigability and the ability to embed diagrams that Markdown simply cannot represent.
+
+**Slideshows are the next step.** Karpathy also mentions asking the LLM to present its output as slideshows. This is the same logic taken one step further: if HTML is better than Markdown for some tasks, a slide deck is better than a wall of HTML for others. Tools like Marp let the model write decks in plain Markdown that compile to HTML slides, which means you can go from question to presentation in seconds.
+
+**Where this is going.** Karpathy starts to make a broader point in the tweet about output modalities (his last visible line trails off about audio), suggesting that the right output format for an LLM response is whatever best matches the question. Text and chat are a default, not an optimum. As models get better at generating rich, structured outputs in seconds, the conversation shifts from "what does the model say" to "what format does this answer want to be in".
+
+I am going to start applying the HTML trick by default in my own Claude Code prompts where the output is meant to be read carefully rather than skimmed. The cost of asking for HTML is one line in the prompt. The upside is everything Thariq laid out in the May 8 entry: richness, density, share-ability, and the simple fact that I will actually read it.
+
+### People
+
+- **Andrej Karpathy**, AI researcher, founder of Eureka Labs, ex-Director of AI at Tesla, founding member of OpenAI · [X](https://x.com/karpathy) · [karpathy.ai](https://karpathy.ai/)
+
+### Resources
+
+- [Karpathy's tweet](https://x.com/karpathy/status/2053872850101285137) - The HTML output endorsement
+- [The Unreasonable Effectiveness of HTML](https://thariqs.github.io/html-effectiveness/) - Thariq Shihipar's original post, covered in the May 8 entry
+- [Marp](https://marp.app/) - Markdown-to-deck tool useful for the slideshow workflow Karpathy mentions
+
+---
+
+## May 15, 2026 - A 6-Month Roadmap to Become an AI Infrastructure Engineer
+
+I came across a post from Jahir Sheikh that lays out a 12-stage path to becoming an AI Infrastructure Engineer in six months. I am documenting it because applied AI engineering, the skill of actually shipping working AI systems, has become more valuable for most people in the industry than knowing how to train models from scratch.
+
+Most people working in AI right now will not be the ones training frontier models. They will be the ones taking those models, wrapping them in production-grade infrastructure, and making them reliable, fast and cheap enough for real users. That work has its own deep technical stack. Jahir's roadmap is the cleanest, shortest version of that stack I have seen.
+
+**Why this matters more than a research-heavy curriculum.** The bottleneck for most AI products today is not "can we train a better model". It is "can we serve this model at scale, with low latency, without burning all our money, while keeping it observable and reliable". Every one of those words is an infrastructure problem. The people who solve those problems are the ones who get hired into AI infra roles and the ones founders fight over.
+
+**The 12 stages.**
+
+1. **Linux + Networking** — Processes, memory, GPUs, sockets, HTTP, TCP/IP basics.
+2. **Python + Backend** — Async Python, FastAPI, queues, concurrency fundamentals.
+3. **GPU Fundamentals** — CUDA basics, VRAM, batching, quantization, throughput.
+4. **LLM Inference** — vLLM, TensorRT-LLM, speculative decoding, KV caching.
+5. **Distributed Systems** — Load balancing, queues, retries, autoscaling, distributed workers.
+6. **AI Serving** — Model APIs, streaming responses, rate limiting, observability.
+7. **Data Pipelines** — Kafka, Airflow, ETL pipelines, vector indexing.
+8. **Kubernetes + Cloud** — Docker, Kubernetes, AWS/GCP basics, infra automation.
+9. **Monitoring + Reliability** — Prometheus, Grafana, tracing, AI cost monitoring.
+10. **Real AI Systems** — Deploy scalable chat apps, RAG pipelines, inference clusters.
+11. **Open Source** — Contribute to inference tooling or AI infra projects.
+12. **Apply** — AI Infra Engineer, Platform Engineer, ML Systems Engineer.
+
+**What is smart about the ordering.** The first six stages are foundation: Linux, Python, GPUs, inference, distributed systems, serving. Without those, every higher-level system you build is a house on sand. Stages 7 to 9 layer the production realities on top, data, orchestration, observability. Only at stage 10 do you build complete systems, and only at 11 do you contribute upstream. The discipline of doing it in this order is what most self-taught learners get wrong. They jump straight to deploying chat apps or fiddling with RAG without understanding the substrate they are running on, so when something breaks at scale they have no model in their head to debug it.
+
+**My take on the timeline.** Six months is realistic only if you can spend most of your week on this. At ten hours a week the same path is probably closer to eighteen months. The compounding part comes from stage 11. When you start contributing to actual inference tooling, you stop being a learner and become a peer to the people who build the stuff.
+
+I am sharing this because it is exactly the kind of resource I would have wanted when I started. If the surface area of modern AI engineering feels intimidating, treat this as your map.
+
+### People
+
+- **Jahir Sheikh**, AI engineer · [X](https://x.com/jahirsheikh8)
+
+### Resources
+
+- [Jahir's tweet: 6 months to AI Infrastructure Engineer](https://x.com/jahirsheikh8/status/2054817239585694173) - The original 12-stage roadmap
