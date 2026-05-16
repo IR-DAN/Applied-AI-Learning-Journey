@@ -239,6 +239,90 @@
     font-size: 18px;
   }
 
+  /* GitHub CTA */
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-star {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid var(--accent);
+    transition: transform 0.08s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  }
+  .btn-star:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+  .btn-star .star-icon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+  .btn-star .count {
+    display: none;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1px 9px;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    min-width: 18px;
+    justify-content: center;
+    font-weight: 600;
+  }
+  .btn-star .count.loaded { display: inline-flex; }
+
+  .btn-watch {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .btn-watch:hover { color: var(--accent); text-decoration: underline; }
+
+  /* End-of-page CTA */
+  .outro-cta {
+    margin: 32px 0 0 0;
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, var(--accent-soft), transparent);
+    text-align: center;
+  }
+  .outro-cta h2 {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+  .outro-cta p {
+    font-family: var(--font-sans);
+    font-size: 14.5px;
+    color: var(--muted);
+    margin: 0 0 18px 0;
+  }
+  .outro-cta .cta-row { justify-content: center; margin-top: 0; }
+
   article.entry {
     margin-bottom: 80px;
     padding-bottom: 48px;
@@ -730,6 +814,16 @@
         <p>A day-by-day record of my applied AI learning journey, shared openly to encourage others.</p>
         <p class="tagline"><em>If we put in the time and effort, we can learn anything.</em></p>
       </blockquote>
+      <div class="cta-row">
+        <a class="btn-star" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey" target="_blank" rel="noopener" aria-label="Star this repository on GitHub">
+          <svg class="star-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/>
+          </svg>
+          <span>Star on GitHub</span>
+          <span class="count" id="star-count-hero" aria-label="star count"></span>
+        </a>
+        <a class="btn-watch" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey/subscription" target="_blank" rel="noopener">Watch for updates →</a>
+      </div>
     </header>
 
     <article class="entry" id="may-2-2026-posthog">
@@ -1541,6 +1635,21 @@ comparisons.
         <li><a href="https://steipete.me/posts/2026/openclaw">OpenClaw, OpenAI and the future</a> - Peter's earlier blog post on joining OpenAI</li>
       </ul>
     </article>
+
+    <aside class="outro-cta">
+      <h2>Enjoying this channel?</h2>
+      <p>Star the repo to support it, watch it to get notified when a new entry lands.</p>
+      <div class="cta-row">
+        <a class="btn-star" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey" target="_blank" rel="noopener" aria-label="Star this repository on GitHub">
+          <svg class="star-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/>
+          </svg>
+          <span>Star on GitHub</span>
+          <span class="count" id="star-count-outro" aria-label="star count"></span>
+        </a>
+        <a class="btn-watch" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey/subscription" target="_blank" rel="noopener">Watch for updates →</a>
+      </div>
+    </aside>
   </main>
 </div>
 
@@ -1583,6 +1692,26 @@ comparisons.
     }, { rootMargin: '-80px 0px -65% 0px', threshold: 0 });
 
     document.querySelectorAll('article.entry').forEach(function (el) { io.observe(el); });
+
+    function formatStars(n) {
+      if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'k';
+      return String(n);
+    }
+
+    var countEls = document.querySelectorAll('.btn-star .count');
+    if (countEls.length) {
+      fetch('https://api.github.com/repos/IR-DAN/Applied-AI-Learning-Journey')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!data || typeof data.stargazers_count !== 'number') return;
+          var text = formatStars(data.stargazers_count);
+          countEls.forEach(function (el) {
+            el.textContent = text;
+            el.classList.add('loaded');
+          });
+        })
+        .catch(function () {});
+    }
   })();
 </script>
 </body>
