@@ -39,6 +39,8 @@
     --day-may12-soft: #ccfbf1;
     --day-may15: #4f46e5;
     --day-may15-soft: #eef2ff;
+    --day-may16: #db2777;
+    --day-may16-soft: #fce7f3;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -72,6 +74,8 @@
       --day-may12-soft: rgba(94, 234, 212, 0.14);
       --day-may15: #a5b4fc;
       --day-may15-soft: rgba(165, 180, 252, 0.14);
+      --day-may16: #f9a8d4;
+      --day-may16-soft: rgba(249, 168, 212, 0.14);
     }
   }
 
@@ -149,6 +153,7 @@
   aside.sidebar .day-tag.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
   aside.sidebar .day-tag.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
   aside.sidebar .day-tag.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
+  aside.sidebar .day-tag.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -268,6 +273,7 @@
   article.entry .date.day-may11 { color: var(--day-may11); background: var(--day-may11-soft); }
   article.entry .date.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
   article.entry .date.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
+  article.entry .date.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -556,6 +562,76 @@
     .roadmap { grid-template-columns: 1fr; }
   }
 
+  /* Workflow grid (e.g. OpenClaw automations) */
+  .workflow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 18px 0 28px 0;
+  }
+  .workflow-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--code-bg);
+    align-items: start;
+  }
+  .workflow-item .bot {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--day-may16-soft);
+    color: var(--day-may16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 1px;
+    font-family: var(--font-sans);
+  }
+  .workflow-item .body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .workflow-item .body strong { font-weight: 600; display: block; margin-bottom: 2px; }
+  .workflow-item .body .desc { color: var(--muted); }
+  @media (max-width: 700px) {
+    .workflow { grid-template-columns: 1fr; }
+  }
+
+  /* Stat callout */
+  .stat-callout {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    margin: 18px 0 24px 0;
+    border-radius: 8px;
+    background: var(--day-may16-soft);
+    border-left: 4px solid var(--day-may16);
+  }
+  .stat-callout .num {
+    font-family: var(--font-sans);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--day-may16);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-callout .label {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .stat-callout .label strong { font-weight: 600; }
+
   .pill-row .pill {
     background: var(--accent-soft);
     color: var(--accent);
@@ -635,6 +711,12 @@
         <span class="day-tag day-may15">May 15, 2026</span>
         <ul>
           <li><a href="#may-15-2026-roadmap">A 6-Month Roadmap to Become an AI Infrastructure Engineer</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
+        <span class="day-tag day-may16">May 16, 2026</span>
+        <ul>
+          <li><a href="#may-16-2026-openclaw">OpenClaw: What Building Software Looks Like When Tokens Don't Matter</a></li>
         </ul>
       </div>
     </nav>
@@ -1363,6 +1445,100 @@ comparisons.
       <h3>Resources</h3>
       <ul>
         <li><a href="https://x.com/jahirsheikh8/status/2054817239585694173">Jahir's tweet: 6 months to AI Infrastructure Engineer</a> - The original 12-stage roadmap</li>
+      </ul>
+    </article>
+
+    <article class="entry" id="may-16-2026-openclaw">
+      <header>
+        <span class="date day-may16">May 16, 2026</span>
+        <h2><a class="anchor" href="#may-16-2026-openclaw" aria-label="Link to this entry">#</a>OpenClaw: What Building Software Looks Like When Tokens Don't Matter</h2>
+      </header>
+
+      <p>Peter Steinberger, who joined OpenAI earlier this year to work on OpenClaw, posted a thread in response to people freaking out over his AI spend. The framing of his question is the part I want to remember:</p>
+
+      <blockquote>
+        <p>"How would we build software in the future if tokens don't matter?"</p>
+      </blockquote>
+
+      <p>His answer is the operational setup at OpenClaw, which sounds genuinely wild. Some of this could be marketing dressed up as engineering culture. But if even half of it is true, this is what building software looks like when you stop counting tokens.</p>
+
+      <div class="stat-callout">
+        <div class="num">~100</div>
+        <div class="label"><strong>codex agents running in the cloud at any given time</strong><br>covering the full lifecycle of OpenClaw, not just code generation</div>
+      </div>
+
+      <p><strong>What they actually run.</strong> Per the post:</p>
+
+      <div class="workflow" role="list" aria-label="OpenClaw automations">
+        <div class="workflow-item" role="listitem">
+          <div class="bot">PR</div>
+          <div class="body"><strong>PR &amp; issue review</strong><span class="desc">Every PR and every issue gets reviewed. <code>clawsweeper</code> finds 6-month-old issues silently resolved by recent fixes and closes them with an exact reference.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">S</div>
+          <div class="body"><strong>Per-commit security review</strong><span class="desc">Every commit gets a security review by codex.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">∑</div>
+          <div class="body"><strong>Issue dedup &amp; clustering</strong><span class="desc">Codex de-duplicates issues, clusters them and reports on the most pressing ones.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">📹</div>
+          <div class="body"><strong>Before / after fix videos</strong><span class="desc">Agents recreate complex setups on ephemeral <code>crabbox.sh</code> machines, log into Telegram, record before/after videos and post them on PRs.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">+</div>
+          <div class="body"><strong>Auto-PR from issues</strong><span class="desc">Codex watches incoming issues and, if they fit the documented vision, auto-creates a PR. Another codex then reviews it.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">🚫</div>
+          <div class="body"><strong>Spam moderation</strong><span class="desc">Codex scans comments for spam and blocks people.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">⚡</div>
+          <div class="body"><strong>Perf regression reports</strong><span class="desc">Codex verifies performance benchmarks and reports regressions into Discord.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">🎙</div>
+          <div class="body"><strong>Meeting-driven PRs</strong><span class="desc">Agents sit in on meetings and proactively start work, creating PRs for features as they are discussed.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">◫</div>
+          <div class="body"><strong>Functional-unit review</strong><span class="desc"><code>clawpatch.ai</code> splits every project into functional units that get reviewed for bugs and regressions.</span></div>
+        </div>
+        <div class="workflow-item" role="listitem">
+          <div class="bot">🛡</div>
+          <div class="body"><strong>Security regression scan</strong><span class="desc">The same split is used with Vercel's deepsec and Codex Security to find security regressions and vulnerabilities.</span></div>
+        </div>
+      </div>
+
+      <p><strong>Why the framing matters.</strong> Until recently the unconscious constraint on every "should we automate this with an AI?" question was cost per call. Once you start asking "what would we build if tokens were free", a lot of friction in software development dissolves. Issue triage becomes continuous. Security review becomes continuous. PR creation becomes continuous. The whole development surface stops being a series of human-throttled events and becomes a streaming process, with humans intervening only where judgment is actually required.</p>
+
+      <p><strong>Why it might not be marketing.</strong> The economics actually work for a project like OpenClaw. Token cost has dropped roughly 10x year-over-year for capable models. If you can run 100 agents for the cost that 10 agents used to be, the question shifts from "can we afford this?" to "what would we even want to do with all this compute?". Peter's answer is to spend it on quality, security and responsiveness, not on shipping more code. That is a reasonable bet.</p>
+
+      <p><strong>Why I am noting this.</strong> I do not yet know if I can do this at my scale. But the question itself is worth carrying around: where in my own workflow am I behaving like tokens are scarce, when they no longer are? Continuous review, continuous triage, continuous testing are old ideas, but the constraint that made them expensive has changed.</p>
+
+      <p>If even a third of this setup is real, it is the most interesting practical operating model I have seen for a software project in 2026.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Peter Steinberger</strong>, Engineer at OpenAI working on OpenClaw, founder and ex-CEO of PSPDFKit · <a href="https://x.com/steipete">X</a> · <a href="https://steipete.me/">steipete.me</a></li>
+      </ul>
+
+      <h3>Companies &amp; Tools</h3>
+      <ul>
+        <li><strong>OpenClaw</strong>: OpenAI's agentic coding project, the team Peter joined in early 2026</li>
+        <li><strong>clawsweeper</strong>: An OpenClaw bot that reconciles open issues against recent main commits and closes resolved ones with a precise reference</li>
+        <li><strong>clawpatch.ai</strong>: OpenClaw's project for splitting codebases into functional units to enable targeted review</li>
+        <li><strong>crabbox.sh</strong>: Ephemeral machine provisioning used by their agent infra for setup recreation</li>
+        <li><strong>Vercel deepsec</strong>: Security analysis tool referenced as part of the OpenClaw vulnerability-detection setup</li>
+        <li><strong>Codex Security</strong>: OpenAI's codex variant tuned for security regression detection</li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/steipete/status/2055405041843052792">Peter Steinberger's tweet on OpenClaw's setup</a> - The post described above</li>
+        <li><a href="https://steipete.me/posts/2026/openclaw">OpenClaw, OpenAI and the future</a> - Peter's earlier blog post on joining OpenAI</li>
       </ul>
     </article>
   </main>

@@ -20,6 +20,7 @@
 - [May 11, 2026 - OpenAI Daybreak: AI That Helps Defenders, Not Just Attackers](#may-11-2026--openai-daybreak-ai-that-helps-defenders-not-just-attackers)
 - [May 12, 2026 - Karpathy Endorses the HTML Output Trick](#may-12-2026--karpathy-endorses-the-html-output-trick)
 - [May 15, 2026 - A 6-Month Roadmap to Become an AI Infrastructure Engineer](#may-15-2026--a-6-month-roadmap-to-become-an-ai-infrastructure-engineer)
+- [May 16, 2026 - OpenClaw: What Building Software Looks Like When Tokens Don't Matter](#may-16-2026--openclaw-what-building-software-looks-like-when-tokens-dont-matter)
 
 ---
 
@@ -409,3 +410,52 @@ I am sharing this because it is exactly the kind of resource I would have wanted
 ### Resources
 
 - [Jahir's tweet: 6 months to AI Infrastructure Engineer](https://x.com/jahirsheikh8/status/2054817239585694173) - The original 12-stage roadmap
+
+---
+
+## May 16, 2026 - OpenClaw: What Building Software Looks Like When Tokens Don't Matter
+
+Peter Steinberger, who joined OpenAI earlier this year to work on OpenClaw, posted a thread in response to people freaking out over his AI spend. The framing of his question is the part I want to remember:
+
+> "How would we build software in the future if tokens don't matter?"
+
+His answer is the operational setup at OpenClaw, which sounds genuinely wild. Some of this could be marketing dressed up as engineering culture. But if even half of it is true, this is what building software looks like when you stop counting tokens.
+
+**What they actually run.** Per the post, OpenClaw has roughly 100 codex agents running in the cloud at any given time. They cover the full lifecycle of a project, not just code generation:
+
+- Every PR and every issue gets reviewed. A bot called clawsweeper finds 6-month-old issues that have been silently resolved by recent fixes and closes them with an exact reference.
+- Every commit gets a security review by codex.
+- Codex de-duplicates issues, clusters them and reports on the most pressing ones.
+- Agents recreate complex setups on ephemeral crabbox.sh machines, log into Telegram, record before/after videos and post them on PRs.
+- Codex watches incoming issues and, if they fit the documented vision, auto-creates a PR. Another codex then reviews it.
+- Codex scans comments for spam and blocks people.
+- Codex verifies performance benchmarks and reports regressions into Discord.
+- Agents sit in on meetings and proactively start work, creating PRs for features as they are discussed.
+- A separate project, clawpatch.ai, splits all their projects into functional units that get reviewed for bugs and regressions.
+- The same functional-unit split is used with Vercel's deepsec and Codex Security to find security regressions and vulnerabilities.
+
+**Why the framing matters.** Until recently the unconscious constraint on every "should we automate this with an AI?" question was cost per call. Once you start asking "what would we build if tokens were free", a lot of friction in software development dissolves. Issue triage becomes continuous. Security review becomes continuous. PR creation becomes continuous. The whole development surface stops being a series of human-throttled events and becomes a streaming process, with humans intervening only where judgment is actually required.
+
+**Why it might not be marketing.** The economics actually work for a project like OpenClaw. Token cost has dropped roughly 10x year-over-year for capable models. If you can run 100 agents for the cost that 10 agents used to be, the question shifts from "can we afford this?" to "what would we even want to do with all this compute?". Peter's answer is to spend it on quality, security and responsiveness, not on shipping more code. That is a reasonable bet.
+
+**Why I am noting this.** I do not yet know if I can do this at my scale. But the question itself is worth carrying around: where in my own workflow am I behaving like tokens are scarce, when they no longer are? Continuous review, continuous triage, continuous testing are old ideas, but the constraint that made them expensive has changed.
+
+If even a third of this setup is real, it is the most interesting practical operating model I have seen for a software project in 2026.
+
+### People
+
+- **Peter Steinberger**, Engineer at OpenAI working on OpenClaw, founder and ex-CEO of PSPDFKit · [X](https://x.com/steipete) · [steipete.me](https://steipete.me/)
+
+### Companies & Tools
+
+- **OpenClaw**: OpenAI's agentic coding project, the team Peter joined in early 2026
+- **clawsweeper**: An OpenClaw bot that reconciles open issues against recent main commits and closes resolved ones with a precise reference
+- **clawpatch.ai**: OpenClaw's project for splitting codebases into functional units to enable targeted review
+- **crabbox.sh**: Ephemeral machine provisioning used by their agent infra for setup recreation
+- **Vercel deepsec**: Security analysis tool referenced as part of the OpenClaw vulnerability-detection setup
+- **Codex Security**: OpenAI's codex variant tuned for security regression detection
+
+### Resources
+
+- [Peter Steinberger's tweet on OpenClaw's setup](https://x.com/steipete/status/2055405041843052792) - The post described above
+- [OpenClaw, OpenAI and the future](https://steipete.me/posts/2026/openclaw) - Peter's earlier blog post on joining OpenAI
