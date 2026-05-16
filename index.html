@@ -11,6 +11,16 @@
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%238250df'/><text x='8' y='12' text-anchor='middle' fill='white' font-family='-apple-system,sans-serif' font-weight='700' font-size='10'>D</text></svg>">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme-preference');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+  })();
+</script>
 <style>
   :root {
     --bg: #fdfdfc;
@@ -48,7 +58,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #0d1117;
       --surface: #161b22;
       --text: #e6edf3;
@@ -79,6 +89,36 @@
     }
   }
 
+  :root[data-theme="dark"] {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #a371f7;
+    --accent-soft: rgba(163, 113, 247, 0.14);
+    --border: #30363d;
+    --code-bg: #161b22;
+    --quote-border: #30363d;
+    --link: #58a6ff;
+
+    --day-may2: #a371f7;
+    --day-may2-soft: rgba(163, 113, 247, 0.14);
+    --day-may3: #58a6ff;
+    --day-may3-soft: rgba(88, 166, 255, 0.14);
+    --day-may4: #3fb950;
+    --day-may4-soft: rgba(63, 185, 80, 0.14);
+    --day-may8: #f59e0b;
+    --day-may8-soft: rgba(245, 158, 11, 0.14);
+    --day-may11: #ff7b72;
+    --day-may11-soft: rgba(255, 123, 114, 0.14);
+    --day-may12: #5eead4;
+    --day-may12-soft: rgba(94, 234, 212, 0.14);
+    --day-may15: #a5b4fc;
+    --day-may15-soft: rgba(165, 180, 252, 0.14);
+    --day-may16: #f9a8d4;
+    --day-may16-soft: rgba(249, 168, 212, 0.14);
+  }
+
   * { box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
@@ -102,6 +142,51 @@
     background: linear-gradient(90deg, var(--day-may2), var(--day-may3), var(--day-may4), var(--day-may8));
     z-index: 100;
     transition: width 60ms linear;
+  }
+
+  /* Theme toggle */
+  .theme-toggle {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 90;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    padding: 0;
+    transition: color 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.06);
+  }
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun,
+  .theme-toggle[data-resolved="dark"] .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon,
+  .theme-toggle[data-resolved="dark"] .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
   }
 
   .layout {
@@ -745,6 +830,15 @@
 </head>
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light or dark theme" title="Toggle theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1zm0 12a1 1 0 0 1 1 1V19a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1zm7.5-4.5a1 1 0 0 1-1 1H17a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm-12 0a1 1 0 0 1-1 1H5a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm10.61-6.11a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zM8.36 15.64a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zm9.75 2.47a1 1 0 0 1-1.41 0l-1.06-1.06a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41zM8.36 8.36a1 1 0 0 1-1.41 0L5.89 7.3a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41zM12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.742 13.045A8.088 8.088 0 0 1 19.5 13.5c-4.694 0-8.5-3.806-8.5-8.5 0-.43.032-.852.094-1.265a.5.5 0 0 0-.65-.557A9.5 9.5 0 1 0 21.3 13.683a.5.5 0 0 0-.558-.638z"/>
+  </svg>
+</button>
 
 <div class="layout">
   <aside class="sidebar">
@@ -1696,6 +1790,31 @@ comparisons.
     function formatStars(n) {
       if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'k';
       return String(n);
+    }
+
+    var toggle = document.getElementById('theme-toggle');
+    var darkMql = window.matchMedia('(prefers-color-scheme: dark)');
+    function resolvedTheme() {
+      var explicit = document.documentElement.getAttribute('data-theme');
+      if (explicit === 'light' || explicit === 'dark') return explicit;
+      return darkMql.matches ? 'dark' : 'light';
+    }
+    function syncToggleState() {
+      if (toggle) toggle.setAttribute('data-resolved', resolvedTheme());
+    }
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var next = resolvedTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme-preference', next); } catch (e) {}
+        syncToggleState();
+      });
+      syncToggleState();
+      if (darkMql.addEventListener) {
+        darkMql.addEventListener('change', syncToggleState);
+      } else if (darkMql.addListener) {
+        darkMql.addListener(syncToggleState);
+      }
     }
 
     var countEls = document.querySelectorAll('.btn-star .count');
