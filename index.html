@@ -11,6 +11,16 @@
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%238250df'/><text x='8' y='12' text-anchor='middle' fill='white' font-family='-apple-system,sans-serif' font-weight='700' font-size='10'>D</text></svg>">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme-preference');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+  })();
+</script>
 <style>
   :root {
     --bg: #fdfdfc;
@@ -41,6 +51,8 @@
     --day-may15-soft: #eef2ff;
     --day-may16: #db2777;
     --day-may16-soft: #fce7f3;
+    --day-may17: #65a30d;
+    --day-may17-soft: #ecfccb;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -48,7 +60,7 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #0d1117;
       --surface: #161b22;
       --text: #e6edf3;
@@ -76,7 +88,41 @@
       --day-may15-soft: rgba(165, 180, 252, 0.14);
       --day-may16: #f9a8d4;
       --day-may16-soft: rgba(249, 168, 212, 0.14);
+      --day-may17: #bef264;
+      --day-may17-soft: rgba(190, 242, 100, 0.14);
     }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #a371f7;
+    --accent-soft: rgba(163, 113, 247, 0.14);
+    --border: #30363d;
+    --code-bg: #161b22;
+    --quote-border: #30363d;
+    --link: #58a6ff;
+
+    --day-may2: #a371f7;
+    --day-may2-soft: rgba(163, 113, 247, 0.14);
+    --day-may3: #58a6ff;
+    --day-may3-soft: rgba(88, 166, 255, 0.14);
+    --day-may4: #3fb950;
+    --day-may4-soft: rgba(63, 185, 80, 0.14);
+    --day-may8: #f59e0b;
+    --day-may8-soft: rgba(245, 158, 11, 0.14);
+    --day-may11: #ff7b72;
+    --day-may11-soft: rgba(255, 123, 114, 0.14);
+    --day-may12: #5eead4;
+    --day-may12-soft: rgba(94, 234, 212, 0.14);
+    --day-may15: #a5b4fc;
+    --day-may15-soft: rgba(165, 180, 252, 0.14);
+    --day-may16: #f9a8d4;
+    --day-may16-soft: rgba(249, 168, 212, 0.14);
+    --day-may17: #bef264;
+    --day-may17-soft: rgba(190, 242, 100, 0.14);
   }
 
   * { box-sizing: border-box; }
@@ -102,6 +148,51 @@
     background: linear-gradient(90deg, var(--day-may2), var(--day-may3), var(--day-may4), var(--day-may8));
     z-index: 100;
     transition: width 60ms linear;
+  }
+
+  /* Theme toggle */
+  .theme-toggle {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 90;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    padding: 0;
+    transition: color 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.06);
+  }
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun,
+  .theme-toggle[data-resolved="dark"] .icon-sun { display: block; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon,
+  .theme-toggle[data-resolved="dark"] .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
   }
 
   .layout {
@@ -154,6 +245,7 @@
   aside.sidebar .day-tag.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
   aside.sidebar .day-tag.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
   aside.sidebar .day-tag.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
+  aside.sidebar .day-tag.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -358,6 +450,7 @@
   article.entry .date.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
   article.entry .date.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
   article.entry .date.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
+  article.entry .date.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -617,8 +710,8 @@
     width: 36px;
     height: 36px;
     border-radius: 8px;
-    background: var(--day-may15-soft);
-    color: var(--day-may15);
+    background: var(--stage-accent-soft, var(--day-may15-soft));
+    color: var(--stage-accent, var(--day-may15));
     font-weight: 700;
     font-size: 14px;
     display: flex;
@@ -627,7 +720,7 @@
     font-variant-numeric: tabular-nums;
     font-family: var(--font-sans);
   }
-  .stage.final .num { background: var(--day-may15); color: #fff; }
+  .stage.final .num { background: var(--stage-accent, var(--day-may15)); color: #fff; }
   .stage .title {
     font-family: var(--font-sans);
     font-weight: 600;
@@ -746,10 +839,25 @@
 <body>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light or dark theme" title="Toggle theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 4.5a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.5a1 1 0 0 1 1-1zm0 12a1 1 0 0 1 1 1V19a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1zm7.5-4.5a1 1 0 0 1-1 1H17a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm-12 0a1 1 0 0 1-1 1H5a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm10.61-6.11a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zM8.36 15.64a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zm9.75 2.47a1 1 0 0 1-1.41 0l-1.06-1.06a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41zM8.36 8.36a1 1 0 0 1-1.41 0L5.89 7.3a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41zM12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z"/>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.742 13.045A8.088 8.088 0 0 1 19.5 13.5c-4.694 0-8.5-3.806-8.5-8.5 0-.43.032-.852.094-1.265a.5.5 0 0 0-.65-.557A9.5 9.5 0 1 0 21.3 13.683a.5.5 0 0 0-.558-.638z"/>
+  </svg>
+</button>
+
 <div class="layout">
   <aside class="sidebar">
     <h2>Entries</h2>
     <nav class="toc">
+      <div class="day-group">
+        <span class="day-tag day-may17">May 17, 2026</span>
+        <ul>
+          <li><a href="#may-17-2026-genai-roadmap">Another 6-Month Roadmap: GenAI Engineer</a></li>
+        </ul>
+      </div>
       <div class="day-group">
         <span class="day-tag day-may16">May 16, 2026</span>
         <ul>
@@ -825,6 +933,121 @@
         <a class="btn-watch" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey/subscription" target="_blank" rel="noopener">Watch for updates →</a>
       </div>
     </header>
+
+    <article class="entry" id="may-17-2026-genai-roadmap">
+      <header>
+        <span class="date day-may17">May 17, 2026</span>
+        <h2><a class="anchor" href="#may-17-2026-genai-roadmap" aria-label="Link to this entry">#</a>Another 6-Month Roadmap: GenAI Engineer</h2>
+      </header>
+
+      <p>Two days after I documented Jahir Sheikh's roadmap to becoming an AI Infrastructure Engineer in six months, Suraj Sharma posted the same shape of post but for GenAI Engineer. Different stack, same structure, same timeframe.</p>
+
+      <p>Dropping this without much commentary. The two roadmaps complement each other: infra is the substrate, GenAI is what you build on top. Anyone serious about applied AI engineering would benefit from working through both.</p>
+
+      <p><strong>Walking back the timeline caveat.</strong> I added a "6 months only if you can go near-full-time" qualifier to the <a href="#may-15-2026-roadmap">May 15 entry</a>. I want to take that back. After thinking about it more, six months is realistic, full stop. The materials are good, the tools are abundant, and the daily compounding of working with these systems is faster than I gave credit for. If you put in the hours, six months gets you there.</p>
+
+      <p><strong>The 12 stages.</strong></p>
+
+      <div class="roadmap" role="list" aria-label="12-stage roadmap to GenAI Engineer" style="--stage-accent: var(--day-may17); --stage-accent-soft: var(--day-may17-soft);">
+        <div class="stage" role="listitem">
+          <div class="num">01</div>
+          <div>
+            <p class="title">Python + Async Architecture</p>
+            <p class="topics">FastAPI, asyncio, typing, Pydantic v2, event-driven design, API integration patterns.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">02</div>
+          <div>
+            <p class="title">Multimodal LLM Fundamentals</p>
+            <p class="topics">Transformer architecture, SLMs vs LLMs, context window management, vision/audio inputs, token economics.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">03</div>
+          <div>
+            <p class="title">Structured Outputs + Prompt Ops</p>
+            <p class="topics">JSON schema enforcement, function calling, prompt versioning, template management, few-shot optimization.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">04</div>
+          <div>
+            <p class="title">Advanced RAG + Knowledge Graphs</p>
+            <p class="topics">Hybrid search, graph RAG, semantic reranking, metadata filtering, citation grounding, incremental indexing.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">05</div>
+          <div>
+            <p class="title">Agentic Workflows + Orchestration</p>
+            <p class="topics">LangGraph/LlamaIndex, tool use, planning loops, multi-agent collaboration, human-in-the-loop handoffs.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">06</div>
+          <div>
+            <p class="title">Production GenAI Applications</p>
+            <p class="topics">Streaming responses, optimistic UI, fallback models, rate limiting, cost-aware routing, session management.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">07</div>
+          <div>
+            <p class="title">Evaluation + Quality Assurance</p>
+            <p class="topics">LLM-as-a-judge, automated eval harnesses, regression testing, hallucination metrics, RAGAS/DeepEval.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">08</div>
+          <div>
+            <p class="title">Inference + Infrastructure Optimization</p>
+            <p class="topics">vLLM/SGLang, quantization (FP8/INT4), KV caching, speculative decoding, edge deployment, model distillation.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">09</div>
+          <div>
+            <p class="title">MLOps + Observability</p>
+            <p class="topics">Distributed tracing, latency monitoring, cost dashboards, drift detection, CI/CD for prompts and models.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">10</div>
+          <div>
+            <p class="title">AI Safety + Compliance</p>
+            <p class="topics">Guardrails, prompt injection defense, PII redaction, copyright checks, EU AI Act compliance, content filtering.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">11</div>
+          <div>
+            <p class="title">Open Source + Portfolio</p>
+            <p class="topics">Ship multimodal agents publicly, write technical deep dives, record demo videos, contribute to orchestration libs.</p>
+          </div>
+        </div>
+        <div class="stage final" role="listitem">
+          <div class="num">12</div>
+          <div>
+            <p class="title">Apply</p>
+            <p class="topics">GenAI Engineer, AI Application Developer, LLM Infrastructure Engineer, Autonomous Systems Engineer.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>If you are picking between the two, GenAI is the more product-facing path and AI Infra is the more systems-facing one. They overlap meaningfully on inference and observability.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Suraj Sharma</strong>, AI engineer · <a href="https://x.com/suraj_sharma14">X</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/suraj_sharma14/status/2055626821673075036">Suraj's tweet: 6 months to GenAI Engineer</a> - The original 12-stage roadmap</li>
+        <li>See also: <a href="#may-15-2026-roadmap">the May 15 roadmap for AI Infrastructure Engineer</a></li>
+      </ul>
+    </article>
 
     <article class="entry" id="may-16-2026-openclaw">
       <header>
@@ -1696,6 +1919,31 @@ comparisons.
     function formatStars(n) {
       if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'k';
       return String(n);
+    }
+
+    var toggle = document.getElementById('theme-toggle');
+    var darkMql = window.matchMedia('(prefers-color-scheme: dark)');
+    function resolvedTheme() {
+      var explicit = document.documentElement.getAttribute('data-theme');
+      if (explicit === 'light' || explicit === 'dark') return explicit;
+      return darkMql.matches ? 'dark' : 'light';
+    }
+    function syncToggleState() {
+      if (toggle) toggle.setAttribute('data-resolved', resolvedTheme());
+    }
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var next = resolvedTheme() === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme-preference', next); } catch (e) {}
+        syncToggleState();
+      });
+      syncToggleState();
+      if (darkMql.addEventListener) {
+        darkMql.addEventListener('change', syncToggleState);
+      } else if (darkMql.addListener) {
+        darkMql.addListener(syncToggleState);
+      }
     }
 
     var countEls = document.querySelectorAll('.btn-star .count');
