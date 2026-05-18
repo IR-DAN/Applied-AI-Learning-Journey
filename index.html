@@ -51,6 +51,8 @@
     --day-may15-soft: #eef2ff;
     --day-may16: #db2777;
     --day-may16-soft: #fce7f3;
+    --day-may17: #65a30d;
+    --day-may17-soft: #ecfccb;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -86,6 +88,8 @@
       --day-may15-soft: rgba(165, 180, 252, 0.14);
       --day-may16: #f9a8d4;
       --day-may16-soft: rgba(249, 168, 212, 0.14);
+      --day-may17: #bef264;
+      --day-may17-soft: rgba(190, 242, 100, 0.14);
     }
   }
 
@@ -117,6 +121,8 @@
     --day-may15-soft: rgba(165, 180, 252, 0.14);
     --day-may16: #f9a8d4;
     --day-may16-soft: rgba(249, 168, 212, 0.14);
+    --day-may17: #bef264;
+    --day-may17-soft: rgba(190, 242, 100, 0.14);
   }
 
   * { box-sizing: border-box; }
@@ -239,6 +245,7 @@
   aside.sidebar .day-tag.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
   aside.sidebar .day-tag.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
   aside.sidebar .day-tag.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
+  aside.sidebar .day-tag.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -443,6 +450,7 @@
   article.entry .date.day-may12 { color: var(--day-may12); background: var(--day-may12-soft); }
   article.entry .date.day-may15 { color: var(--day-may15); background: var(--day-may15-soft); }
   article.entry .date.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
+  article.entry .date.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -702,8 +710,8 @@
     width: 36px;
     height: 36px;
     border-radius: 8px;
-    background: var(--day-may15-soft);
-    color: var(--day-may15);
+    background: var(--stage-accent-soft, var(--day-may15-soft));
+    color: var(--stage-accent, var(--day-may15));
     font-weight: 700;
     font-size: 14px;
     display: flex;
@@ -712,7 +720,7 @@
     font-variant-numeric: tabular-nums;
     font-family: var(--font-sans);
   }
-  .stage.final .num { background: var(--day-may15); color: #fff; }
+  .stage.final .num { background: var(--stage-accent, var(--day-may15)); color: #fff; }
   .stage .title {
     font-family: var(--font-sans);
     font-weight: 600;
@@ -845,6 +853,12 @@
     <h2>Entries</h2>
     <nav class="toc">
       <div class="day-group">
+        <span class="day-tag day-may17">May 17, 2026</span>
+        <ul>
+          <li><a href="#may-17-2026-genai-roadmap">Another 6-Month Roadmap: GenAI Engineer</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
         <span class="day-tag day-may16">May 16, 2026</span>
         <ul>
           <li><a href="#may-16-2026-openclaw">OpenClaw: What Building Software Looks Like When Tokens Don't Matter</a></li>
@@ -919,6 +933,121 @@
         <a class="btn-watch" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey/subscription" target="_blank" rel="noopener">Watch for updates →</a>
       </div>
     </header>
+
+    <article class="entry" id="may-17-2026-genai-roadmap">
+      <header>
+        <span class="date day-may17">May 17, 2026</span>
+        <h2><a class="anchor" href="#may-17-2026-genai-roadmap" aria-label="Link to this entry">#</a>Another 6-Month Roadmap: GenAI Engineer</h2>
+      </header>
+
+      <p>Two days after I documented Jahir Sheikh's roadmap to becoming an AI Infrastructure Engineer in six months, Suraj Sharma posted the same shape of post but for GenAI Engineer. Different stack, same structure, same timeframe.</p>
+
+      <p>Dropping this without much commentary. The two roadmaps complement each other: infra is the substrate, GenAI is what you build on top. Anyone serious about applied AI engineering would benefit from working through both.</p>
+
+      <p><strong>Walking back the timeline caveat.</strong> I added a "6 months only if you can go near-full-time" qualifier to the <a href="#may-15-2026-roadmap">May 15 entry</a>. I want to take that back. After thinking about it more, six months is realistic, full stop. The materials are good, the tools are abundant, and the daily compounding of working with these systems is faster than I gave credit for. If you put in the hours, six months gets you there.</p>
+
+      <p><strong>The 12 stages.</strong></p>
+
+      <div class="roadmap" role="list" aria-label="12-stage roadmap to GenAI Engineer" style="--stage-accent: var(--day-may17); --stage-accent-soft: var(--day-may17-soft);">
+        <div class="stage" role="listitem">
+          <div class="num">01</div>
+          <div>
+            <p class="title">Python + Async Architecture</p>
+            <p class="topics">FastAPI, asyncio, typing, Pydantic v2, event-driven design, API integration patterns.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">02</div>
+          <div>
+            <p class="title">Multimodal LLM Fundamentals</p>
+            <p class="topics">Transformer architecture, SLMs vs LLMs, context window management, vision/audio inputs, token economics.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">03</div>
+          <div>
+            <p class="title">Structured Outputs + Prompt Ops</p>
+            <p class="topics">JSON schema enforcement, function calling, prompt versioning, template management, few-shot optimization.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">04</div>
+          <div>
+            <p class="title">Advanced RAG + Knowledge Graphs</p>
+            <p class="topics">Hybrid search, graph RAG, semantic reranking, metadata filtering, citation grounding, incremental indexing.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">05</div>
+          <div>
+            <p class="title">Agentic Workflows + Orchestration</p>
+            <p class="topics">LangGraph/LlamaIndex, tool use, planning loops, multi-agent collaboration, human-in-the-loop handoffs.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">06</div>
+          <div>
+            <p class="title">Production GenAI Applications</p>
+            <p class="topics">Streaming responses, optimistic UI, fallback models, rate limiting, cost-aware routing, session management.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">07</div>
+          <div>
+            <p class="title">Evaluation + Quality Assurance</p>
+            <p class="topics">LLM-as-a-judge, automated eval harnesses, regression testing, hallucination metrics, RAGAS/DeepEval.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">08</div>
+          <div>
+            <p class="title">Inference + Infrastructure Optimization</p>
+            <p class="topics">vLLM/SGLang, quantization (FP8/INT4), KV caching, speculative decoding, edge deployment, model distillation.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">09</div>
+          <div>
+            <p class="title">MLOps + Observability</p>
+            <p class="topics">Distributed tracing, latency monitoring, cost dashboards, drift detection, CI/CD for prompts and models.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">10</div>
+          <div>
+            <p class="title">AI Safety + Compliance</p>
+            <p class="topics">Guardrails, prompt injection defense, PII redaction, copyright checks, EU AI Act compliance, content filtering.</p>
+          </div>
+        </div>
+        <div class="stage" role="listitem">
+          <div class="num">11</div>
+          <div>
+            <p class="title">Open Source + Portfolio</p>
+            <p class="topics">Ship multimodal agents publicly, write technical deep dives, record demo videos, contribute to orchestration libs.</p>
+          </div>
+        </div>
+        <div class="stage final" role="listitem">
+          <div class="num">12</div>
+          <div>
+            <p class="title">Apply</p>
+            <p class="topics">GenAI Engineer, AI Application Developer, LLM Infrastructure Engineer, Autonomous Systems Engineer.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>If you are picking between the two, GenAI is the more product-facing path and AI Infra is the more systems-facing one. They overlap meaningfully on inference and observability.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Suraj Sharma</strong>, AI engineer · <a href="https://x.com/suraj_sharma14">X</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/suraj_sharma14/status/2055626821673075036">Suraj's tweet: 6 months to GenAI Engineer</a> - The original 12-stage roadmap</li>
+        <li>See also: <a href="#may-15-2026-roadmap">the May 15 roadmap for AI Infrastructure Engineer</a></li>
+      </ul>
+    </article>
 
     <article class="entry" id="may-16-2026-openclaw">
       <header>

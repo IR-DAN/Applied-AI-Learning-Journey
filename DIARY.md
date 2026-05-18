@@ -8,6 +8,7 @@
 
 ## Table of Contents
 
+- [May 17, 2026 - Another 6-Month Roadmap: GenAI Engineer](#may-17-2026--another-6-month-roadmap-genai-engineer)
 - [May 16, 2026 - OpenClaw: What Building Software Looks Like When Tokens Don't Matter](#may-16-2026--openclaw-what-building-software-looks-like-when-tokens-dont-matter)
 - [May 15, 2026 - A 6-Month Roadmap to Become an AI Infrastructure Engineer](#may-15-2026--a-6-month-roadmap-to-become-an-ai-infrastructure-engineer)
 - [May 12, 2026 - Karpathy Endorses the HTML Output Trick](#may-12-2026--karpathy-endorses-the-html-output-trick)
@@ -21,6 +22,42 @@
 - [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
 - [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
 - [May 2, 2026 - Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful](#may-2-2026--why-github-over-notion-and-posthogs-guide-to-making-claude-code-actually-useful)
+
+---
+
+## May 17, 2026 - Another 6-Month Roadmap: GenAI Engineer
+
+Two days after I documented Jahir Sheikh's roadmap to becoming an AI Infrastructure Engineer in six months, Suraj Sharma posted the same shape of post but for GenAI Engineer. Different stack, same structure, same timeframe.
+
+Dropping this without much commentary. The two roadmaps complement each other: infra is the substrate, GenAI is what you build on top. Anyone serious about applied AI engineering would benefit from working through both.
+
+**Walking back the timeline caveat.** I added a "6 months only if you can go near-full-time" qualifier to the May 15 entry. I want to take that back. After thinking about it more, six months is realistic, full stop. The materials are good, the tools are abundant, and the daily compounding of working with these systems is faster than I gave credit for. If you put in the hours, six months gets you there.
+
+**The 12 stages.**
+
+1. **Python + Async Architecture** — FastAPI, asyncio, typing, Pydantic v2, event-driven design, API integration patterns.
+2. **Multimodal LLM Fundamentals** — Transformer architecture, SLMs vs LLMs, context window management, vision/audio inputs, token economics.
+3. **Structured Outputs + Prompt Ops** — JSON schema enforcement, function calling, prompt versioning, template management, few-shot optimization.
+4. **Advanced RAG + Knowledge Graphs** — Hybrid search, graph RAG, semantic reranking, metadata filtering, citation grounding, incremental indexing.
+5. **Agentic Workflows + Orchestration** — LangGraph/LlamaIndex, tool use, planning loops, multi-agent collaboration, human-in-the-loop handoffs.
+6. **Production GenAI Applications** — Streaming responses, optimistic UI, fallback models, rate limiting, cost-aware routing, session management.
+7. **Evaluation + Quality Assurance** — LLM-as-a-judge, automated eval harnesses, regression testing, hallucination metrics, RAGAS/DeepEval.
+8. **Inference + Infrastructure Optimization** — vLLM/SGLang, quantization (FP8/INT4), KV caching, speculative decoding, edge deployment, model distillation.
+9. **MLOps + Observability** — Distributed tracing, latency monitoring, cost dashboards, drift detection, CI/CD for prompts and models.
+10. **AI Safety + Compliance** — Guardrails, prompt injection defense, PII redaction, copyright checks, EU AI Act compliance, content filtering.
+11. **Open Source + Portfolio** — Ship multimodal agents publicly, write technical deep dives, record demo videos, contribute to orchestration libs.
+12. **Apply** — GenAI Engineer, AI Application Developer, LLM Infrastructure Engineer, Autonomous Systems Engineer.
+
+If you are picking between the two, GenAI is the more product-facing path and AI Infra is the more systems-facing one. They overlap meaningfully on inference and observability.
+
+### People
+
+- **Suraj Sharma**, AI engineer · [X](https://x.com/suraj_sharma14)
+
+### Resources
+
+- [Suraj's tweet: 6 months to GenAI Engineer](https://x.com/suraj_sharma14/status/2055626821673075036) - The original 12-stage roadmap
+- See also: [the May 15 roadmap for AI Infrastructure Engineer](#may-15-2026--a-6-month-roadmap-to-become-an-ai-infrastructure-engineer)
 
 ---
 
