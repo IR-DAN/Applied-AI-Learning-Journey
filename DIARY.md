@@ -8,6 +8,7 @@
 
 ## Table of Contents
 
+- [May 22, 2026 - An Army of Citizens Building Evals](#may-22-2026--an-army-of-citizens-building-evals)
 - [May 17, 2026 - Another 6-Month Roadmap: GenAI Engineer](#may-17-2026--another-6-month-roadmap-genai-engineer)
 - [May 16, 2026 - OpenClaw: What Building Software Looks Like When Tokens Don't Matter](#may-16-2026--openclaw-what-building-software-looks-like-when-tokens-dont-matter)
 - [May 15, 2026 - A 6-Month Roadmap to Become an AI Infrastructure Engineer](#may-15-2026--a-6-month-roadmap-to-become-an-ai-infrastructure-engineer)
@@ -22,6 +23,31 @@
 - [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
 - [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
 - [May 2, 2026 - Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful](#may-2-2026--why-github-over-notion-and-posthogs-guide-to-making-claude-code-actually-useful)
+
+---
+
+## May 22, 2026 - An Army of Citizens Building Evals
+
+I read an article today by Andy Hall, a Stanford political economist who writes the Free Systems newsletter, arguing that schools and universities should stop trying to ban AI and instead teach students to write evals. The framing stuck with me because evals are central to my own work in AI, and they are one of the hardest problems in the field, nowhere near as trivial as they look from the outside.
+
+**The thesis.** Banning AI in education is a losing battle. Hall's own framing was blunt: he understands the impulse behind university AI bans, but thinks they are a mistake. The more useful response is to teach the skill that actually matters in an AI-saturated world, which is judging whether an AI's output is any good. That skill is evaluation. If you can write a good eval, you can tell the difference between an answer that looks right and one that is right, and you can do it at scale.
+
+**What an eval actually is.** An eval is a test for an AI system. You define a task, a set of inputs, and a way of scoring the outputs, then you run a model against it and measure how well it does. That sounds simple. It is not. The hard part is defining "good" precisely enough that you can measure it, especially for open-ended work where there is no single correct answer. Writing an eval forces you to articulate exactly what you want, which is most of the intellectual work in any domain.
+
+**Why this is the right skill to teach.** Asking a student to write an eval for an essay, a proof, or a historical argument is asking them to define what quality means in that domain. You cannot do that without deeply understanding the subject. So an eval-first curriculum does not dodge learning, it doubles down on it. The student who can specify what a good answer looks like has understood more than the student who can just produce one answer by hand.
+
+**The "army of citizens" part.** Hall's broader project, across the Free Systems newsletter, is about distributing power over AI rather than concentrating it in a few labs. Reading the title through that lens: right now the evaluations that shape frontier models are written by a small number of people inside a handful of companies. If millions of people learn to write evals, you get a distributed, bottom-up check on what these systems are allowed to do and how well they have to perform. An army of citizens building evals is a far healthier arrangement than leaving it to the labs alone.
+
+**Why this lands for me.** In my own AI work, evals are consistently the thing that separates a demo from a product. It is easy to get a model to do something impressive once. It is very hard to know, rigorously, whether it does the thing reliably across all the cases you care about. Most of the difficulty in shipping AI is not the model, it is the measurement. Hall is right that this is a fundamental literacy, and the sooner people learn it, the better.
+
+### People
+
+- **Andy Hall**, Stanford political economist, author of the Free Systems newsletter · [X](https://x.com/ahall_research) · [freesystems.substack.com](https://freesystems.substack.com/)
+
+### Resources
+
+- [An Army of Citizens Building Evals](https://freesystems.substack.com/p/an-army-of-citizens-building-evals) - Andy Hall's article on teaching evals instead of banning AI
+- [Andy Hall's post on X](https://x.com/ahall_research/status/2057488041045082219) - Where I found the article
 
 ---
 
