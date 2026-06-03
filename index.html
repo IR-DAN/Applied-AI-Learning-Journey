@@ -55,6 +55,8 @@
     --day-may17-soft: #ecfccb;
     --day-may22: #0891b2;
     --day-may22-soft: #cffafe;
+    --day-jun2: #ea580c;
+    --day-jun2-soft: #ffedd5;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -94,6 +96,8 @@
       --day-may17-soft: rgba(190, 242, 100, 0.14);
       --day-may22: #22d3ee;
       --day-may22-soft: rgba(34, 211, 238, 0.14);
+      --day-jun2: #fb923c;
+      --day-jun2-soft: rgba(251, 146, 60, 0.14);
     }
   }
 
@@ -129,6 +133,8 @@
     --day-may17-soft: rgba(190, 242, 100, 0.14);
     --day-may22: #22d3ee;
     --day-may22-soft: rgba(34, 211, 238, 0.14);
+    --day-jun2: #fb923c;
+    --day-jun2-soft: rgba(251, 146, 60, 0.14);
   }
 
   * { box-sizing: border-box; }
@@ -253,6 +259,7 @@
   aside.sidebar .day-tag.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
   aside.sidebar .day-tag.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
   aside.sidebar .day-tag.day-may22 { color: var(--day-may22); background: var(--day-may22-soft); }
+  aside.sidebar .day-tag.day-jun2 { color: var(--day-jun2); background: var(--day-jun2-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -459,6 +466,7 @@
   article.entry .date.day-may16 { color: var(--day-may16); background: var(--day-may16-soft); }
   article.entry .date.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
   article.entry .date.day-may22 { color: var(--day-may22); background: var(--day-may22-soft); }
+  article.entry .date.day-jun2 { color: var(--day-jun2); background: var(--day-jun2-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -798,14 +806,14 @@
     padding: 16px 18px;
     margin: 18px 0 24px 0;
     border-radius: 8px;
-    background: var(--day-may16-soft);
-    border-left: 4px solid var(--day-may16);
+    background: var(--stage-accent-soft, var(--day-may16-soft));
+    border-left: 4px solid var(--stage-accent, var(--day-may16));
   }
   .stat-callout .num {
     font-family: var(--font-sans);
     font-size: 36px;
     font-weight: 700;
-    color: var(--day-may16);
+    color: var(--stage-accent, var(--day-may16));
     line-height: 1;
     letter-spacing: -0.02em;
   }
@@ -860,6 +868,12 @@
   <aside class="sidebar">
     <h2>Entries</h2>
     <nav class="toc">
+      <div class="day-group">
+        <span class="day-tag day-jun2">June 2, 2026</span>
+        <ul>
+          <li><a href="#jun-2-2026-workflows">Claude Code Workflows: The Biggest Upgrade Since Skills and Subagents</a></li>
+        </ul>
+      </div>
       <div class="day-group">
         <span class="day-tag day-may22">May 22, 2026</span>
         <ul>
@@ -947,6 +961,50 @@
         <a class="btn-watch" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey/subscription" target="_blank" rel="noopener">Watch for updates →</a>
       </div>
     </header>
+
+    <article class="entry" id="jun-2-2026-workflows">
+      <header>
+        <span class="date day-jun2">June 2, 2026</span>
+        <h2><a class="anchor" href="#jun-2-2026-workflows" aria-label="Link to this entry">#</a>Claude Code Workflows: The Biggest Upgrade Since Skills and Subagents</h2>
+      </header>
+
+      <p>Thariq Shihipar from the Claude Code team posted yesterday that Workflows are the biggest upgrade to Claude Code's capabilities since skills and subagents. That is a strong claim from someone who works on the product, and I have written about him before: his HTML output post anchored the <a href="#may-8-2026-html">May 8 entry</a>, and Karpathy's endorsement of the same idea was the <a href="#may-12-2026-karpathy">May 12 entry</a>. When the person shipping the product says a new feature is significant, I pay attention.</p>
+
+      <p>Workflows shipped on May 28 alongside Claude Opus 4.8. The short version: you describe what you want, Claude writes a JavaScript orchestration script on the fly, and a runtime executes that script by spinning up many subagents in parallel.</p>
+
+      <div class="stat-callout" style="--stage-accent: var(--day-jun2); --stage-accent-soft: var(--day-jun2-soft);">
+        <div class="num">1,000</div>
+        <div class="label"><strong>subagents per run, 16 concurrent</strong><br>Requires Claude Code v2.1.154 or later · Max, Team, and Enterprise plans</div>
+      </div>
+
+      <p><strong>How it actually works.</strong> You give Claude Code a natural-language request that contains the word <code>workflow</code>, or you turn on a setting called <code>ultracode</code> (which combines very high reasoning with automatic workflow orchestration). Claude plans the work, breaks it into subtasks, and writes a JavaScript script that orchestrates everything. A separate runtime then executes that script. Subagents spin up in parallel and attack the problem from independent angles. Other agents try to refute the first set's findings. The run iterates until the answers converge, and results are verified before they reach you.</p>
+
+      <p><strong>The numbers.</strong> Up to 16 subagents running concurrently, capped at 1,000 agents total per run. Runs in the CLI, the desktop app, and the VS Code extension. On by default for Max and Team plans.</p>
+
+      <p><strong>Why this is a real shift.</strong> Skills and subagents already changed how Claude Code handled multi-step work. Workflows take it further by letting the model write its own orchestration code from scratch, on the fly, for the specific question you asked. The parallel-then-refute structure is the part that caught my attention. Most multi-agent systems run agents in parallel for speed. This one runs them in parallel and then sets agents against each other's findings. That epistemic check is closer to how rigorous human teams actually work.</p>
+
+      <p><strong>The non-technical angle.</strong> Thariq said he is particularly excited about the non-technical tasks workflows enable. The implication is that the bottleneck is no longer "can the model do the task" but "how do we structure 100 attempts at the task so the right answer wins". Strategy, research, planning, content evaluation: anything where the right answer benefits from running multiple independent lines of reasoning and reconciling them. That is most of knowledge work.</p>
+
+      <p>This is the kind of feature that makes me want to subscribe to Max just to try it. I probably will.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Thariq Shihipar</strong>, Engineer on Claude Code at Anthropic · <a href="https://x.com/trq212">X</a></li>
+      </ul>
+
+      <h3>Companies &amp; Tools</h3>
+      <ul>
+        <li><strong>Claude Code Workflows</strong>: Anthropic's dynamic workflow feature in Claude Code, released May 28, 2026 alongside Claude Opus 4.8. Up to 16 concurrent subagents, capped at 1,000 per run</li>
+        <li><strong>Claude Opus 4.8</strong>: The frontier model released alongside Workflows · <a href="https://www.anthropic.com/news/claude-opus-4-8">anthropic.com/news/claude-opus-4-8</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/trq212/status/2061907337154367865">Thariq's post on Workflows</a> - The endorsement that prompted this entry</li>
+        <li><a href="https://www.anthropic.com/news/claude-opus-4-8">Introducing Claude Opus 4.8</a> - Anthropic's release post that includes Workflows</li>
+        <li><a href="https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8-alongside-dynamic-workflows-and-cheaper-fast-mode-with-workflows-capped-at-1000-subagents/">Anthropic Ships Claude Opus 4.8 Alongside Dynamic Workflows</a> - Coverage with the technical details</li>
+      </ul>
+    </article>
 
     <article class="entry" id="may-22-2026-evals">
       <header>

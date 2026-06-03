@@ -8,6 +8,7 @@
 
 ## Table of Contents
 
+- [June 2, 2026 - Claude Code Workflows: The Biggest Upgrade Since Skills and Subagents](#june-2-2026--claude-code-workflows-the-biggest-upgrade-since-skills-and-subagents)
 - [May 22, 2026 - An Army of Citizens Building Evals](#may-22-2026--an-army-of-citizens-building-evals)
 - [May 17, 2026 - Another 6-Month Roadmap: GenAI Engineer](#may-17-2026--another-6-month-roadmap-genai-engineer)
 - [May 16, 2026 - OpenClaw: What Building Software Looks Like When Tokens Don't Matter](#may-16-2026--openclaw-what-building-software-looks-like-when-tokens-dont-matter)
@@ -23,6 +24,39 @@
 - [May 3, 2026 - Qwen3.6-27B: Open Source Models Are Catching Up to Frontier Models Fast](#may-3-2026--qwen36-27b-open-source-models-are-catching-up-to-frontier-models-fast)
 - [May 3, 2026 - How AI Is Changing the Product Manager's Job, and What to Do About It](#may-3-2026--how-ai-is-changing-the-product-managers-job-and-what-to-do-about-it)
 - [May 2, 2026 - Why GitHub Over Notion, and PostHog's Guide to Making Claude Code Actually Useful](#may-2-2026--why-github-over-notion-and-posthogs-guide-to-making-claude-code-actually-useful)
+
+---
+
+## June 2, 2026 - Claude Code Workflows: The Biggest Upgrade Since Skills and Subagents
+
+Thariq Shihipar from the Claude Code team posted yesterday that Workflows are the biggest upgrade to Claude Code's capabilities since skills and subagents. That is a strong claim from someone who works on the product, and I have written about him before: his HTML output post anchored the May 8 entry, and Karpathy's endorsement of the same idea was the May 12 entry. When the person shipping the product says a new feature is significant, I pay attention.
+
+Workflows shipped on May 28 alongside Claude Opus 4.8. The short version: you describe what you want, Claude writes a JavaScript orchestration script on the fly, and a runtime executes that script by spinning up many subagents in parallel.
+
+**How it actually works.** You give Claude Code a natural-language request that contains the word "workflow", or you turn on a setting called ultracode (which combines very high reasoning with automatic workflow orchestration). Claude plans the work, breaks it into subtasks, and writes a JavaScript script that orchestrates everything. A separate runtime then executes that script. Subagents spin up in parallel and attack the problem from independent angles. Other agents try to refute the first set's findings. The run iterates until the answers converge, and results are verified before they reach you.
+
+**The numbers.** Up to 16 subagents running concurrently, capped at 1,000 agents total per run. Requires Claude Code v2.1.154 or later. Runs in the CLI, the desktop app, and the VS Code extension. Available on Max, Team and Enterprise plans, on by default for Max and Team.
+
+**Why this is a real shift.** Skills and subagents already changed how Claude Code handled multi-step work. Workflows take it further by letting the model write its own orchestration code from scratch, on the fly, for the specific question you asked. The parallel-then-refute structure is the part that caught my attention. Most multi-agent systems run agents in parallel for speed. This one runs them in parallel and then sets agents against each other's findings. That epistemic check is closer to how rigorous human teams actually work.
+
+**The non-technical angle.** Thariq said he is particularly excited about the non-technical tasks workflows enable. The implication is that the bottleneck is no longer "can the model do the task" but "how do we structure 100 attempts at the task so the right answer wins". Strategy, research, planning, content evaluation: anything where the right answer benefits from running multiple independent lines of reasoning and reconciling them. That is most of knowledge work.
+
+This is the kind of feature that makes me want to subscribe to Max just to try it. I probably will.
+
+### People
+
+- **Thariq Shihipar**, Engineer on Claude Code at Anthropic · [X](https://x.com/trq212)
+
+### Companies & Tools
+
+- **Claude Code Workflows**: Anthropic's dynamic workflow feature in Claude Code, released May 28, 2026 alongside Claude Opus 4.8. Up to 16 concurrent subagents, capped at 1,000 per run
+- **Claude Opus 4.8**: The frontier model released alongside Workflows · [anthropic.com/news/claude-opus-4-8](https://www.anthropic.com/news/claude-opus-4-8)
+
+### Resources
+
+- [Thariq's post on Workflows](https://x.com/trq212/status/2061907337154367865) - The endorsement that prompted this entry
+- [Introducing Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) - Anthropic's release post that includes Workflows
+- [Anthropic Ships Claude Opus 4.8 Alongside Dynamic Workflows](https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8-alongside-dynamic-workflows-and-cheaper-fast-mode-with-workflows-capped-at-1000-subagents/) - Coverage with the technical details
 
 ---
 
