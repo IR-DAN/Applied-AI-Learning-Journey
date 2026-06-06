@@ -57,6 +57,8 @@
     --day-may22-soft: #cffafe;
     --day-jun2: #ea580c;
     --day-jun2-soft: #ffedd5;
+    --day-jun5: #c026d3;
+    --day-jun5-soft: #fae8ff;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -98,6 +100,8 @@
       --day-may22-soft: rgba(34, 211, 238, 0.14);
       --day-jun2: #fb923c;
       --day-jun2-soft: rgba(251, 146, 60, 0.14);
+      --day-jun5: #e879f9;
+      --day-jun5-soft: rgba(232, 121, 249, 0.14);
     }
   }
 
@@ -135,6 +139,8 @@
     --day-may22-soft: rgba(34, 211, 238, 0.14);
     --day-jun2: #fb923c;
     --day-jun2-soft: rgba(251, 146, 60, 0.14);
+    --day-jun5: #e879f9;
+    --day-jun5-soft: rgba(232, 121, 249, 0.14);
   }
 
   * { box-sizing: border-box; }
@@ -260,6 +266,7 @@
   aside.sidebar .day-tag.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
   aside.sidebar .day-tag.day-may22 { color: var(--day-may22); background: var(--day-may22-soft); }
   aside.sidebar .day-tag.day-jun2 { color: var(--day-jun2); background: var(--day-jun2-soft); }
+  aside.sidebar .day-tag.day-jun5 { color: var(--day-jun5); background: var(--day-jun5-soft); }
 
   aside.sidebar ul {
     list-style: none;
@@ -467,6 +474,7 @@
   article.entry .date.day-may17 { color: var(--day-may17); background: var(--day-may17-soft); }
   article.entry .date.day-may22 { color: var(--day-may22); background: var(--day-may22-soft); }
   article.entry .date.day-jun2 { color: var(--day-jun2); background: var(--day-jun2-soft); }
+  article.entry .date.day-jun5 { color: var(--day-jun5); background: var(--day-jun5-soft); }
 
   article.entry h2 {
     font-size: 30px;
@@ -869,6 +877,12 @@
     <h2>Entries</h2>
     <nav class="toc">
       <div class="day-group">
+        <span class="day-tag day-jun5">June 5, 2026</span>
+        <ul>
+          <li><a href="#jun-5-2026-open-source">Open Source AI Just Had a Defining Week</a></li>
+        </ul>
+      </div>
+      <div class="day-group">
         <span class="day-tag day-jun2">June 2, 2026</span>
         <ul>
           <li><a href="#jun-2-2026-workflows">Claude Code Workflows: The Biggest Upgrade Since Skills and Subagents</a></li>
@@ -961,6 +975,62 @@
         <a class="btn-watch" href="https://github.com/IR-DAN/Applied-AI-Learning-Journey/subscription" target="_blank" rel="noopener">Watch for updates →</a>
       </div>
     </header>
+
+    <article class="entry" id="jun-5-2026-open-source">
+      <header>
+        <span class="date day-jun5">June 5, 2026</span>
+        <h2><a class="anchor" href="#jun-5-2026-open-source" aria-label="Link to this entry">#</a>Open Source AI Just Had a Defining Week</h2>
+      </header>
+
+      <p>I came across a post from Victor Mustar, Head of Product at Hugging Face, calling attention to this week in open source AI. He has the best vantage point on this market of anyone, so when he flags a moment, I look at what shipped. Two major releases on June 1 alone make the case.</p>
+
+      <p>The earlier entries in this diary have touched on the open source thread. The <a href="#may-3-2026-qwen">May 3 Qwen3.6-27B entry</a> covered Alibaba's 27B parameter open-weight model matching Claude Opus 4.6 on real coding benchmarks while being free to download. That was the warning shot. This week was the volley.</p>
+
+      <p><strong>Z.ai shipped the first frontier-tier open-weight coding model.</strong> On June 1, Z.ai released a flagship agentic coding model under an open-weight license. It is the first open model to combine frontier-tier coding ability with a 1-million-token context window and native multimodality, meaning it accepts image and video inputs and can operate a computer.</p>
+
+      <div class="stat-callout" style="--stage-accent: var(--day-jun5); --stage-accent-soft: var(--day-jun5-soft);">
+        <div class="num">59.0%</div>
+        <div class="label"><strong>Z.ai on SWE-Bench Pro, beating GPT-5.5 and Gemini 3.1 Pro</strong><br>Plus 66.0% on Terminal-Bench 2.1 and 74.2% on MCP Atlas — all from a free, downloadable model</div>
+      </div>
+
+      <p>A free, downloadable model that beats the closed flagships from OpenAI and Google on the benchmarks that actually correspond to shipping software. Six months ago this would have been unimaginable.</p>
+
+      <p><strong>NVIDIA released the Cosmos world foundation models.</strong> Also on June 1, NVIDIA dropped a family of open models for physical AI and robotics. <strong>Cosmos Reason 2</strong> is a vision-language model specifically for robotics reasoning. <strong>Cosmos Transfer 2.5</strong> and <strong>Predict 2.5</strong> generate synthetic video. All of it is on Hugging Face and GitHub, free to download, fine-tune and deploy. NVIDIA is not a charity. They are releasing this because they understand that whoever owns the open ecosystem of robotics models has the chips it runs on. It is platform strategy, but the side effect is that anyone working on real-world AI suddenly has frontier-quality tools.</p>
+
+      <p><strong>Why this matters.</strong> The choice between using open and closed models has historically been a choice between control and quality. Closed models were better; open models were free and modifiable. That tradeoff has been quietly shrinking for two years. This week it broke. On coding, the headline open release is now better than the headline closed releases. On robotics, the only options that exist are open. The center of gravity in AI is shifting toward what you can host yourself.</p>
+
+      <p>The consequences are real:</p>
+
+      <ul>
+        <li>If you are building an AI product, the question is no longer "which API do we call". It is "which open model do we fine-tune and serve".</li>
+        <li>If you have been worried about a small number of labs controlling frontier AI, this week is good news. Frontier capability is no longer something only a few companies can produce.</li>
+        <li>If you are an AI infra engineer, the <a href="#may-15-2026-roadmap">May 15 roadmap</a> just became more valuable. Self-hosting frontier-quality models is no longer a "small projects only" concern.</li>
+      </ul>
+
+      <p><strong>Why Victor's voice carries.</strong> Hugging Face is where most of this lands. They host the weights, the datasets and the demos. The Head of Product there sits closer to the data on what people actually do with new model releases than anyone else in the field, which means when he calls a week significant, he sees signals (downloads, fine-tunes, derivative models) that the rest of us read about days later. Worth listening to.</p>
+
+      <p>I will be paying much closer attention to the open source side from here. The frontier is not just a handful of API endpoints anymore.</p>
+
+      <h3>People</h3>
+      <ul>
+        <li><strong>Victor Mustar</strong>, Head of Product at Hugging Face · <a href="https://x.com/victormustar">X</a> · <a href="https://huggingface.co/victor">huggingface.co/victor</a></li>
+      </ul>
+
+      <h3>Companies &amp; Tools</h3>
+      <ul>
+        <li><strong>Z.ai</strong>: Released the first open-weight model to combine frontier-tier coding with 1M context and native multimodality on June 1, 2026</li>
+        <li><strong>NVIDIA Cosmos</strong>: Family of open world foundation models for physical AI and robotics released June 1, 2026, including Cosmos Reason 2 (VLM), Cosmos Transfer 2.5 and Predict 2.5 (synthetic video)</li>
+        <li><strong>Hugging Face</strong>: The hosting platform where most of this lives · <a href="https://huggingface.co/">huggingface.co</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="https://x.com/victormustar/status/2063017894221591008">Victor Mustar's post</a> - The post that prompted this entry</li>
+        <li><a href="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026">State of Open Source on Hugging Face: Spring 2026</a> - Hugging Face's recent overview of where open source is</li>
+        <li><a href="https://blogs.nvidia.com/blog/open-models-data-tools-accelerate-ai/">NVIDIA open models, data and tools announcement</a> - NVIDIA's June 1 release post for Cosmos</li>
+        <li>See also: <a href="#may-3-2026-qwen">the May 3 Qwen3.6-27B entry</a> where this thread started in the diary</li>
+      </ul>
+    </article>
 
     <article class="entry" id="jun-2-2026-workflows">
       <header>
